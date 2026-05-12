@@ -372,8 +372,8 @@ img,svg { display:block; max-width:100%; }
 .badge-val { color:var(--text); font-weight:600; }
 
 /* ── SECTION COMMONS ─────────────────────────────────────── */
-section { padding:90px 0; }
-@media(max-width:768px){ section{padding:64px 0;} }
+section { padding:90px 0; scroll-margin-top:90px; }
+@media(max-width:768px){ section{padding:64px 0; scroll-margin-top:80px;} }
 
 .section-head { max-width:680px; margin:0 auto 56px; text-align:center; }
 .section-tag {
@@ -1416,8 +1416,8 @@ const statObs = new IntersectionObserver(entries => {
 }, { threshold: 0.5 });
 document.querySelectorAll('.stat-num[data-target]').forEach(el => statObs.observe(el));
 
-// Mobile menu close on link click
-document.querySelectorAll('.mobile-menu a').forEach(a => {
+// Close mobile menu on any nav link click (both desktop and mobile)
+document.querySelectorAll('.mobile-menu a, .nav-links a').forEach(a => {
   a.addEventListener('click', () => document.querySelector('.mobile-menu').classList.remove('open'));
 });
 </script>
