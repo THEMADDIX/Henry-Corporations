@@ -49,7 +49,7 @@ const HC = {
   // ── Hero Section ─────────────────────────────────────────────────
   hero: {
     badge:      'Trusted by 500+ E-Commerce Sellers',
-    title:      'Complete <span class="gold">E-Commerce Seller</span> Management Services Across India',
+    title:      'Complete <span class="coral">E-Commerce Seller</span> Management Services Across India',
     sub:        'From GST filing and taxation to Amazon, Flipkart, Meesho and Myntra account management — Henry Corporation handles your complete e-commerce business operations under one roof.',
     ctaText:    'Book Free Consultation',
     ctaHref:    '#contact',
