@@ -16,7 +16,7 @@ const HC = {
     tagline:     "India's Complete E-Commerce Back-Office Partner",
     phone:       '+91 96933 34119',
     phoneTel:    'tel:+919693334119',
-    email:       'hello@henrycorporation.in',
+    email:       'aarif@henry-corporation.com',
     waNumber:    '919693334119',
     hours:       'Mon – Sat, 10:00 AM – 7:00 PM IST',
     location:    'India & UAE',
@@ -147,7 +147,7 @@ const HC = {
         {
           icon:  `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B1F3A" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="16 13 12 17 8 13"/><line x1="12" y1="17" x2="12" y2="7"/></svg>`,
           title: 'GST Registration',
-          desc:  'Complete GST registration support for new e-commerce sellers including GSTIN application, documentation and verification.',
+          desc:  'Complete GST registration support for new e-commerce sellers including GSTIN application, documentation and verification. Starting from ₹499.',
           link:  '#contact', linkText: 'Register Now',
         },
         {
@@ -215,7 +215,7 @@ const HC = {
         {
           icon:  `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B1F3A" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>`,
           title: 'UAE VAT Services',
-          desc:  'FTA registration, quarterly UAE VAT filings and cross-border India↔UAE tax structuring for expanding brands.',
+          desc:  'FTA registration, quarterly UAE VAT filings and cross-border India↔UAE tax structuring for expanding brands. Starting from 60 AED.',
           link:  '#contact', linkText: 'UAE Services',
         },
         {
