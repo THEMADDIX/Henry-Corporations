@@ -88,11 +88,11 @@ function renderHero() {
     <section class="hero" id="home">
       <div class="hero-bg" id="hero-bg"></div>
       <div class="hero-headline-wrap">
-        <div class="hero-badge-pill reveal">${HC.hero.badge}</div>
         <h1 class="hero-headline">${HC.hero.title}</h1>
       </div>
       <div class="hero-bottom">
         <div class="reveal-left">
+          <div class="hero-badge-pill">${HC.hero.badge}</div>
           <div class="hero-rule"></div>
           <p class="hero-sub">${HC.hero.sub}</p>
           <div class="hero-cta-row">
