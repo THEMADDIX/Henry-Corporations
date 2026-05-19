@@ -3,6 +3,9 @@
    All content is read from HC in data.js — edit that file only.
    ================================================================ */
 
+/* ── Page Detection ─────────────────────────────────────── */
+const PAGE = document.body.getAttribute('data-page') || 'home';
+
 /* ── Icons ─────────────────────────────────────────────── */
 const I = {
   arrow:     `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`,
@@ -52,12 +55,17 @@ function renderMeta() {
 /* ── Nav ────────────────────────────────────────────────── */
 function renderNav() {
   document.getElementById('nav-root').innerHTML = `
-    <a href="#" class="nav-logo" aria-label="${HC.company.name} home">
+    <a href="index.html" class="nav-logo" aria-label="${HC.company.name} home">
       <div class="nav-logo-mark">${HC.company.brandLetter}</div>
       <span class="nav-logo-text">${HC.company.shortName}</span>
     </a>
     <ul class="nav-links" role="list">
-      ${HC.nav.map(n => `<li><a href="${n.href}">${n.label}</a></li>`).join('')}
+      ${HC.nav.map(n => {
+        const isActive = window.location.pathname.endsWith(n.href) ||
+                         (PAGE !== 'home' && n.href === PAGE + '.html') ||
+                         (PAGE === n.href.replace('.html',''));
+        return `<li><a href="${n.href}" class="${isActive ? 'active' : ''}">${n.label}</a></li>`;
+      }).join('')}
     </ul>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -96,6 +104,24 @@ function renderHero() {
         </div>
       </div>
       <div class="hero-scroll" id="hero-scroll" aria-label="Scroll down">${I.arrowDown}</div>
+    </section>
+  `;
+}
+
+/* ── Page Hero (coral, inner pages) ────────────────────── */
+function renderPageHero(pageId) {
+  const h = HC.pageHeroes[pageId];
+  if (!h) return '';
+  return `
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-inner">
+          <h1 class="page-hero-title reveal">${h.title}</h1>
+          <div class="page-hero-line"></div>
+          <p class="page-hero-sub reveal reveal-d1">${h.sub}</p>
+          <div class="page-hero-scroll" id="hero-scroll">${I.arrowDown}</div>
+        </div>
+      </div>
     </section>
   `;
 }
@@ -145,7 +171,7 @@ function renderServicesIntro() {
           <div class="svc-intro-right reveal-right">
             <p class="section-sub">Henry Corporation delivers complete e-commerce and financial compliance — GST, accounting, marketplace management and business growth across India and the UAE.</p>
             <br>
-            <a href="#platforms" class="link-text" style="color:var(--coral)">Explore All Services ${I.arrow}</a>
+            <a href="platforms.html" class="link-text" style="color:var(--coral)">Explore All Services ${I.arrow}</a>
           </div>
         </div>
         <div class="svc-cols">
@@ -165,7 +191,7 @@ function renderServicesIntro() {
 /* ── Full Tabbed Services (black section) ───────────────── */
 function renderServices() {
   return `
-    <section class="services-full" id="platforms">
+    <section class="services-full">
       <div class="container">
         <div class="svc-tab-bar" role="tablist" aria-label="Service categories">
           ${HC.serviceCategories.map((c, i) => `
@@ -215,7 +241,7 @@ function renderProblems() {
             <div class="sol-title">One team. Every problem. Solved.</div>
           </div>
           <div class="sol-actions">
-            <a href="#contact" class="btn-ghost">Book Free Consultation ${I.arrow}</a>
+            <a href="contact.html" class="btn-ghost">Book Free Consultation ${I.arrow}</a>
             <a href="${waHref(HC.hero.waMsg)}" class="btn-ghost" target="_blank" rel="noopener">${I.wa} WhatsApp</a>
           </div>
         </div>
@@ -227,7 +253,7 @@ function renderProblems() {
 /* ── Why Choose Us ──────────────────────────────────────── */
 function renderWhyUs() {
   return `
-    <section class="why-section" id="why-us">
+    <section class="why-section">
       <div class="container">
         <div class="why-hdr">
           <h2 class="section-title reveal-left">Why 500+ Sellers<br>Choose Henry Corporation</h2>
@@ -318,7 +344,7 @@ function renderPricing() {
                     <span>${f}</span>
                   </li>`).join('')}
               </ul>
-              <a href="#contact" class="price-cta">Get Started ${I.arrow}</a>
+              <a href="contact.html" class="price-cta">Get Started ${I.arrow}</a>
             </div>`).join('')}
         </div>
       </div>
@@ -334,7 +360,7 @@ function renderCTA() {
         <div class="cta-banner-inner">
           <h2 class="cta-banner-title reveal-left">Ready to take the complexity<br>out of your business?</h2>
           <div class="cta-banner-actions reveal-right">
-            <a href="#contact" class="btn-ghost">Book Free Consultation ${I.arrow}</a>
+            <a href="contact.html" class="btn-ghost">Book Free Consultation ${I.arrow}</a>
             <a href="${waHref(HC.hero.waMsg)}" class="btn-ghost" target="_blank" rel="noopener">${I.wa} WhatsApp</a>
           </div>
         </div>
@@ -447,6 +473,33 @@ function renderContact() {
   `;
 }
 
+/* ── Platform Grid (platforms page) ────────────────────── */
+function renderPlatformGrid() {
+  return `
+    <section class="section">
+      <div class="container">
+        <div class="platform-grid">
+          ${HC.platformDetails.map((p, i) => `
+            <div class="platform-card reveal reveal-d${(i % 3) + 1}">
+              <div class="platform-card-top">
+                <span class="platform-dot" style="background:${p.color}"></span>
+                <span class="platform-name">${p.name}</span>
+                ${p.badge ? `<span class="platform-badge">${p.badge}</span>` : ''}
+              </div>
+              <h3 class="platform-tagline">${p.tagline}</h3>
+              <p class="platform-desc">${p.desc}</p>
+              <ul class="platform-services">
+                ${p.services.map(s => `<li>${I.check} ${s}</li>`).join('')}
+              </ul>
+              <a href="contact.html" class="link-text" style="color:var(--coral);margin-top:auto">Get Started ${I.arrow}</a>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+  `;
+}
+
 /* ── Footer ─────────────────────────────────────────────── */
 function renderFooter() {
   document.getElementById('footer-root').innerHTML = `
@@ -498,23 +551,60 @@ function renderFloats() {
   `;
 }
 
-/* ── Page Assembly ──────────────────────────────────────── */
-function renderPage() {
+/* ── Page Renderers ─────────────────────────────────────── */
+function renderHomePage() {
   document.getElementById('main-root').innerHTML = [
     renderHero(),
     renderMarquee(),
     renderStats(),
     renderServicesIntro(),
+    renderWhyUs(),
+    renderTestimonials(),
+    renderCTA(),
+  ].join('');
+}
+
+function renderServicesPage() {
+  document.getElementById('main-root').innerHTML = [
+    renderPageHero('services'),
     renderServices(),
     renderProblems(),
-    renderWhyUs(),
     renderProcess(),
-    renderTestimonials(),
-    renderPricing(),
     renderCTA(),
-    renderFAQ(),
-    renderContact(),
   ].join('');
+}
+
+function renderPlatformsPage() {
+  document.getElementById('main-root').innerHTML = [
+    renderPageHero('platforms'),
+    renderMarquee(),
+    renderPlatformGrid(),
+    renderStats(),
+    renderCTA(),
+  ].join('');
+}
+
+function renderWhyUsPage() {
+  document.getElementById('main-root').innerHTML = [
+    renderPageHero('why-us'),
+    renderWhyUs(),
+    renderTestimonials(),
+    renderProcess(),
+    renderCTA(),
+  ].join('');
+}
+
+function renderPricingPage() {
+  document.getElementById('main-root').innerHTML = [
+    renderPageHero('pricing'),
+    renderPricing(),
+    renderFAQ(),
+    renderCTA(),
+  ].join('');
+}
+
+function renderContactPage() {
+  document.getElementById('main-root').innerHTML = renderContact();
 }
 
 /* ═══════════════════════════════════════════════
@@ -546,7 +636,7 @@ function initParallax() {
 function initHeroScroll() {
   const btn = document.getElementById('hero-scroll');
   if (btn) btn.addEventListener('click', () => {
-    const target = document.querySelector('.trust-bar');
+    const target = document.querySelector('.trust-bar') || document.querySelector('main > *:nth-child(2)');
     if (target) target.scrollIntoView({ behavior: 'smooth' });
   });
 }
@@ -698,7 +788,17 @@ function init() {
   renderMeta();
   renderNav();
   renderMobileNav();
-  renderPage();
+
+  const pageMap = {
+    home:      renderHomePage,
+    services:  renderServicesPage,
+    platforms: renderPlatformsPage,
+    'why-us':  renderWhyUsPage,
+    pricing:   renderPricingPage,
+    contact:   renderContactPage,
+  };
+  (pageMap[PAGE] || renderHomePage)();
+
   renderFooter();
   renderFloats();
 
@@ -706,15 +806,14 @@ function init() {
   if (yr) yr.textContent = new Date().getFullYear();
 
   initScrollNav();
-  initHeroHeadline();
-  initParallax();
-  initHeroScroll();
+  if (PAGE === 'home') { initHeroHeadline(); initParallax(); initHeroScroll(); }
+  else initHeroScroll();
   initReveal();
-  initServiceTabs();
+  if (PAGE === 'services' || PAGE === 'home') initServiceTabs();
   initFAQ();
   initMobileMenu();
   initStatCounters();
-  initContactSlider();
+  if (PAGE === 'contact' || PAGE === 'home') initContactSlider();
 }
 
 document.addEventListener('DOMContentLoaded', init);
