@@ -22,7 +22,7 @@
   --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 
-  --nav-h: 88px;
+  --nav-h: 110px;
 }
 
 /* ── Reset ──────────────────────────────────────────────── */
@@ -199,19 +199,10 @@ ul { list-style: none; }
   flex-shrink: 0;
 }
 .nav-logo-img {
-  height: 64px;
+  height: 96px;
   width: auto;
   display: block;
   mix-blend-mode: screen;
-}
-.site-header.scrolled .nav-logo {
-  background: var(--black);
-  padding: 3px 12px 3px 3px;
-  border-radius: 4px;
-}
-.site-header.scrolled .nav-logo-img {
-  mix-blend-mode: screen;
-}
 }
 .nav-logo-mark {
   width: 36px; height: 36px;
