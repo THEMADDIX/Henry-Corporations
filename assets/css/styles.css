@@ -199,10 +199,20 @@ ul { list-style: none; }
   flex-shrink: 0;
 }
 .nav-logo-img {
-  height: 52px;
+  height: 72px;
   width: auto;
-  object-fit: contain;
   display: block;
+  mix-blend-mode: screen;   /* strips black bg on dark sections */
+  transition: filter 0.3s;
+}
+/* On white scrolled nav — give logo a dark pill so it stays visible */
+.site-header.scrolled .nav-logo {
+  background: var(--black);
+  padding: 2px 10px 2px 2px;
+  border-radius: 4px;
+}
+.site-header.scrolled .nav-logo-img {
+  mix-blend-mode: screen;
 }
 .nav-logo-mark {
   width: 36px; height: 36px;
@@ -1203,11 +1213,11 @@ ul { list-style: none; }
   border-bottom: 1px solid rgba(255,255,255,0.18);
 }
 .footer-logo-img {
-  height: 90px;
+  height: 130px;
   width: auto;
-  object-fit: contain;
   display: block;
   margin-bottom: 20px;
+  mix-blend-mode: screen;   /* black bg disappears on coral footer */
 }
 .footer-logo-text {
   font-family: var(--serif);
