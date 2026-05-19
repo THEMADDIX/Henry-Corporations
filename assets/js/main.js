@@ -56,8 +56,7 @@ function renderMeta() {
 function renderNav() {
   document.getElementById('nav-root').innerHTML = `
     <a href="index.html" class="nav-logo" aria-label="${HC.company.name} home">
-      <div class="nav-logo-mark">${HC.company.brandLetter}</div>
-      <span class="nav-logo-text">${HC.company.shortName}</span>
+      <img src="assets/images/logo.png" alt="${HC.company.name}" class="nav-logo-img" />
     </a>
     <ul class="nav-links" role="list">
       ${HC.nav.map(n => {
@@ -506,7 +505,7 @@ function renderFooter() {
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <div class="footer-logo-text">${HC.company.shortName}</div>
+          <img src="assets/images/logo.png" alt="${HC.company.name}" class="footer-logo-img" />
           <p class="footer-tagline">${HC.company.footerDesc.slice(0, 130)}…</p>
           <a href="${waHref(HC.hero.waMsg)}" class="btn-ghost" target="_blank" rel="noopener"
              style="font-size:0.7rem;padding:11px 20px">${I.wa} WhatsApp Us</a>
