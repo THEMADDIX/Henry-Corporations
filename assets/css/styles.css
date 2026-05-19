@@ -1658,3 +1658,172 @@ ul { list-style: none; }
   .hero-badge-strip { grid-template-columns: 1fr 1fr; }
   .hero-badge-card  { padding: 14px 12px; }
 }
+
+/* ═══════════════════════════════════════════════
+   SECTION LABEL — premium kicker above headings
+   ═══════════════════════════════════════════════ */
+.section-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-label::before {
+  content: '';
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  flex-shrink: 0;
+}
+.section-label.light {
+  color: rgba(255,255,255,0.38);
+}
+
+/* ═══════════════════════════════════════════════
+   STATS — eyebrow row
+   ═══════════════════════════════════════════════ */
+.stats-eyebrow {
+  padding: 44px 0 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* ═══════════════════════════════════════════════
+   TESTIMONIALS — decorative quote mark
+   ═══════════════════════════════════════════════ */
+.testi-card {
+  position: relative;
+  overflow: hidden;
+}
+.testi-card::before {
+  content: '\201C';
+  font-family: var(--serif);
+  font-size: 8rem;
+  color: var(--coral);
+  opacity: 0.07;
+  position: absolute;
+  top: 4px;
+  left: 20px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════
+   WHY CARD — icon in a tinted box
+   ═══════════════════════════════════════════════ */
+.why-card-icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(232,70,74,0.07);
+  border: 1px solid rgba(232,70,74,0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.45rem;
+  margin-bottom: 22px;
+  transition: background 0.25s, border-color 0.25s;
+}
+.why-card:hover .why-card-icon {
+  background: rgba(232,70,74,0.13);
+  border-color: rgba(232,70,74,0.28);
+}
+
+/* ═══════════════════════════════════════════════
+   SERVICE CARDS — coral bottom accent on hover
+   ═══════════════════════════════════════════════ */
+.svc-card-full {
+  border-bottom: 2px solid transparent;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+}
+.svc-card-full:hover {
+  background: #181818;
+  border-bottom-color: var(--coral);
+  transform: none;
+  box-shadow: none;
+}
+
+/* ═══════════════════════════════════════════════
+   PROCESS STEPS — coral number accent
+   ═══════════════════════════════════════════════ */
+.process-step:first-child .process-num {
+  text-shadow: 0 0 40px rgba(232,70,74,0.35);
+}
+
+/* ═══════════════════════════════════════════════
+   PRICING — popular card outline
+   ═══════════════════════════════════════════════ */
+.price-card.popular {
+  outline: 2px solid var(--coral);
+  outline-offset: -2px;
+}
+
+/* ═══════════════════════════════════════════════
+   CTA BANNER — subtle grid pattern overlay
+   ═══════════════════════════════════════════════ */
+.cta-banner {
+  position: relative;
+  overflow: hidden;
+}
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+}
+.cta-banner .container { position: relative; z-index: 1; }
+
+/* ═══════════════════════════════════════════════
+   FAQ — top border on list, open-state accent
+   ═══════════════════════════════════════════════ */
+.faq-list {
+  border-top: 1px solid var(--gray-light);
+}
+
+/* ═══════════════════════════════════════════════
+   PROBLEM CARDS — coral left accent on hover
+   ═══════════════════════════════════════════════ */
+.prob-card {
+  border-left: 3px solid transparent;
+  transition: background 0.2s, border-color 0.2s;
+}
+.prob-card:hover {
+  background: #1a1a1a;
+  border-left-color: var(--coral);
+}
+
+/* ═══════════════════════════════════════════════
+   SECTION TITLE — tighter letter spacing
+   ═══════════════════════════════════════════════ */
+.section-title {
+  letter-spacing: -0.025em;
+}
+
+/* ═══════════════════════════════════════════════
+   MOBILE POLISH
+   ═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .svc-card-full  { padding: 32px 24px; }
+  .why-card       { padding: 28px 22px; }
+  .testi-card     { padding: 32px 26px; }
+  .price-card     { padding: 40px 28px; }
+  .process-step   { padding: 36px 0; }
+  .solution-block { gap: 28px; }
+  .stats-eyebrow  { padding-top: 32px; }
+  .section-label  { font-size: 0.58rem; }
+  .faq-q          { font-size: 0.94rem; padding: 18px 0; }
+}
+@media (max-width: 480px) {
+  .hero-cta-row .btn-solid-coral,
+  .hero-cta-row .btn-ghost { width: 100%; justify-content: center; }
+  .sol-actions { width: 100%; }
+  .sol-actions .btn-ghost { flex: 1; justify-content: center; }
+}
