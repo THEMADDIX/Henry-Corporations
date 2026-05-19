@@ -1494,3 +1494,166 @@ ul { list-style: none; }
   .platform-grid { grid-template-columns: 1fr; }
   .page-hero-title { font-size: clamp(2.4rem, 9vw, 4rem); }
 }
+
+/* ═══════════════════════════════════════════════
+   HERO UPGRADES — badge pill, dual CTA, trust cards
+   ═══════════════════════════════════════════════ */
+.hero-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  border: 1px solid rgba(232,70,74,0.4);
+  background: rgba(232,70,74,0.08);
+  color: var(--coral);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+.hero-badge-pill::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--coral);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.hero-cta-row {
+  display: flex;
+  gap: 14px;
+  margin-top: 30px;
+  margin-bottom: 26px;
+  flex-wrap: wrap;
+}
+
+/* Trust badge cards — right side of hero */
+.hero-badge-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  max-width: 340px;
+}
+.hero-badge-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.25s, background 0.25s;
+}
+.hero-badge-card:hover {
+  border-color: var(--coral);
+  background: rgba(232,70,74,0.06);
+}
+.hero-badge-card-icon {
+  color: var(--coral);
+  display: flex;
+  align-items: center;
+}
+.hero-badge-card-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.4;
+}
+
+/* ═══════════════════════════════════════════════
+   STATS — sub-label
+   ═══════════════════════════════════════════════ */
+.stat-sub {
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.22);
+  margin-top: 4px;
+}
+
+/* ═══════════════════════════════════════════════
+   PLATFORM LOGOS SECTION
+   ═══════════════════════════════════════════════ */
+.platform-logos-section {
+  background: var(--black-pure);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 28px 0;
+}
+.platform-logos-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  text-align: center;
+  margin-bottom: 18px;
+}
+.platform-logos-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.platform-logo-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.5;
+  transition: opacity 0.25s;
+}
+.platform-logo-item:hover { opacity: 1; }
+.platform-logo-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.platform-logo-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+/* ═══════════════════════════════════════════════
+   SERVICE CARD HOVER IMPROVEMENTS
+   ═══════════════════════════════════════════════ */
+.svc-card-full {
+  transition: transform 0.25s var(--ease-out), box-shadow 0.25s;
+}
+.svc-card-full:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+}
+.why-card {
+  transition: transform 0.25s var(--ease-out), box-shadow 0.25s, border-color 0.25s;
+}
+.why-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--coral);
+}
+.testi-card {
+  transition: transform 0.25s var(--ease-out), box-shadow 0.25s;
+}
+.testi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE — new components
+   ═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .hero-badge-strip { grid-template-columns: 1fr 1fr; max-width: 100%; }
+  .hero-cta-row     { flex-direction: column; gap: 10px; }
+  .hero-cta-row .btn-solid-coral,
+  .hero-cta-row .btn-ghost { justify-content: center; }
+  .platform-logos-row { gap: 24px; }
+  .stat-sub { display: none; }
+}
+@media (max-width: 480px) {
+  .hero-badge-strip { grid-template-columns: 1fr 1fr; }
+  .hero-badge-card  { padding: 14px 12px; }
+}
