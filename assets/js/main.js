@@ -88,18 +88,29 @@ function renderHero() {
     <section class="hero" id="home">
       <div class="hero-bg" id="hero-bg"></div>
       <div class="hero-headline-wrap">
+        <div class="hero-badge-pill reveal">${HC.hero.badge}</div>
         <h1 class="hero-headline">${HC.hero.title}</h1>
       </div>
       <div class="hero-bottom">
         <div class="reveal-left">
           <div class="hero-rule"></div>
           <p class="hero-sub">${HC.hero.sub}</p>
+          <div class="hero-cta-row">
+            <a href="${HC.hero.ctaHref}" class="btn-solid-coral">${HC.hero.ctaText} ${I.arrow}</a>
+            <a href="${waHref(HC.hero.waMsg)}" class="btn-ghost" target="_blank" rel="noopener">${I.wa} ${HC.hero.waText}</a>
+          </div>
           <div class="hero-trust">
             ${HC.hero.trustItems.map(t => `<span class="hero-trust-item">${t.label}</span>`).join('')}
           </div>
         </div>
         <div class="reveal-right">
-          <a href="${HC.hero.ctaHref}" class="btn-ghost">${HC.hero.ctaText} ${I.arrow}</a>
+          <div class="hero-badge-strip">
+            ${HC.hero.trustBadges.map(b => `
+              <div class="hero-badge-card">
+                <div class="hero-badge-card-icon">${b.icon}</div>
+                <div class="hero-badge-card-label">${b.label}</div>
+              </div>`).join('')}
+          </div>
         </div>
       </div>
       <div class="hero-scroll" id="hero-scroll" aria-label="Scroll down">${I.arrowDown}</div>
@@ -152,6 +163,33 @@ function renderStats() {
             <div class="stat-item reveal reveal-d${i + 1}">
               <div class="stat-num" data-target="${s.value}" data-suffix="${s.suffix}">0${s.suffix}</div>
               <div class="stat-lbl">${s.label}</div>
+              ${s.sub ? `<div class="stat-sub">${s.sub}</div>` : ''}
+            </div>`).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+/* ── Platform Logos ─────────────────────────────────────── */
+function renderPlatformLogos() {
+  const platforms = [
+    { name: 'Amazon',   color: '#FF9900' },
+    { name: 'Flipkart', color: '#2874F0' },
+    { name: 'Meesho',   color: '#F43397' },
+    { name: 'Myntra',   color: '#FF3F6C' },
+    { name: 'Alibaba',  color: '#FF6A00' },
+    { name: 'Noon',     color: '#FEEE00', textColor: '#000' },
+  ];
+  return `
+    <div class="platform-logos-section">
+      <div class="container">
+        <p class="platform-logos-label">Trusted by sellers across</p>
+        <div class="platform-logos-row">
+          ${platforms.map(p => `
+            <div class="platform-logo-item">
+              <span class="platform-logo-dot" style="background:${p.color}"></span>
+              <span class="platform-logo-name">${p.name}</span>
             </div>`).join('')}
         </div>
       </div>
@@ -166,9 +204,9 @@ function renderServicesIntro() {
     <section class="svc-intro section" id="services">
       <div class="container">
         <div class="svc-intro-header">
-          <h2 class="section-title reveal-left">Specialized Services.<br>Unmatched Expertise.</h2>
+          <h2 class="section-title reveal-left">GST, VAT & E-Commerce.<br>One Expert Team.</h2>
           <div class="svc-intro-right reveal-right">
-            <p class="section-sub">Henry Corporation delivers complete e-commerce and financial compliance — GST, accounting, marketplace management and business growth across India and the UAE.</p>
+            <p class="section-sub">Henry Corporation delivers complete taxation and e-commerce compliance — GST filing, UAE VAT, Amazon seller accounting, LLC formation, and marketplace management across India and the UAE.</p>
             <br>
             <a href="platforms.html" class="link-text" style="color:var(--coral)">Explore All Services ${I.arrow}</a>
           </div>
@@ -554,6 +592,7 @@ function renderFloats() {
 function renderHomePage() {
   document.getElementById('main-root').innerHTML = [
     renderHero(),
+    renderPlatformLogos(),
     renderMarquee(),
     renderStats(),
     renderServicesIntro(),
