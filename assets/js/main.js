@@ -158,6 +158,9 @@ function renderStats() {
   return `
     <div class="stats-section">
       <div class="container">
+        <div class="stats-eyebrow">
+          <span class="section-label light">By The Numbers</span>
+        </div>
         <div class="stats-grid">
           ${HC.stats.map((s, i) => `
             <div class="stat-item reveal reveal-d${i + 1}">
@@ -204,7 +207,10 @@ function renderServicesIntro() {
     <section class="svc-intro section" id="services">
       <div class="container">
         <div class="svc-intro-header">
-          <h2 class="section-title reveal-left">GST, VAT & E-Commerce.<br>One Expert Team.</h2>
+          <div>
+            <div class="section-label">What We Do</div>
+            <h2 class="section-title reveal-left">GST, VAT & E-Commerce.<br>One Expert Team.</h2>
+          </div>
           <div class="svc-intro-right reveal-right">
             <p class="section-sub">Henry Corporation delivers complete taxation and e-commerce compliance — GST filing, UAE VAT, Amazon seller accounting, LLC formation, and marketplace management across India and the UAE.</p>
             <br>
@@ -238,6 +244,7 @@ function renderServices() {
         ${HC.serviceCategories.map((c, i) => `
           <div class="svc-panel${i === 0 ? ' active' : ''}" role="tabpanel" id="panel-${c.id}">
             <div class="svc-panel-hdr">
+              <div class="section-label light">Our Services</div>
               <h2 class="section-title reveal">${c.title}</h2>
               <p class="section-sub reveal reveal-d1" style="color:rgba(255,255,255,0.52)">${c.sub}</p>
             </div>
@@ -262,6 +269,7 @@ function renderProblems() {
     <section class="problems-section">
       <div class="container">
         <div class="prob-hdr">
+          <div class="section-label light">Sound Familiar?</div>
           <h2 class="section-title reveal">Struggling with these<br>common seller problems?</h2>
           <p class="section-sub reveal reveal-d1" style="color:rgba(255,255,255,0.5)">Sound familiar? These are the exact challenges hundreds of Indian sellers face every month — until they find Henry Corporation.</p>
         </div>
@@ -293,8 +301,11 @@ function renderWhyUs() {
     <section class="why-section">
       <div class="container">
         <div class="why-hdr">
-          <h2 class="section-title reveal-left">Why 500+ Sellers<br>Choose Henry Corporation</h2>
-          <p class="section-sub reveal-right" style="max-width:380px;margin-top:0">We're not just a compliance firm — we're your complete e-commerce operations partner.</p>
+          <div>
+            <div class="section-label">Why Henry Corp</div>
+            <h2 class="section-title reveal-left">Why 500+ Sellers<br>Choose Henry Corporation</h2>
+          </div>
+          <p class="section-sub reveal-right" style="max-width:380px;margin-top:0;align-self:flex-end">We're not just a compliance firm — we're your complete e-commerce operations partner.</p>
         </div>
         <div class="why-grid">
           ${HC.whyUs.map((w, i) => `
@@ -315,6 +326,7 @@ function renderProcess() {
     <section class="process-section">
       <div class="container">
         <div class="process-hdr">
+          <div class="section-label light">How It Works</div>
           <h2 class="section-title reveal">From Sign-Up to Full<br>Management in Days</h2>
         </div>
         <div class="process-grid">
@@ -336,7 +348,8 @@ function renderTestimonials() {
     <section class="testi-section">
       <div class="container">
         <div class="testi-hdr">
-          <h2 class="section-title reveal">What Our Sellers Say</h2>
+          <div class="section-label">Client Stories</div>
+          <h2 class="section-title reveal">What Our Clients Say</h2>
         </div>
         <div class="testi-grid">
           ${HC.testimonials.map((t, i) => `
@@ -363,6 +376,7 @@ function renderPricing() {
     <section class="pricing-section" id="pricing">
       <div class="container">
         <div class="pricing-hdr">
+          <div class="section-label" style="justify-content:center">Transparent Pricing</div>
           <h2 class="section-title reveal">Simple, Transparent Pricing</h2>
           <p class="section-sub reveal reveal-d1">No hidden fees. No surprises. Choose a plan that fits your scale — upgrade anytime.</p>
         </div>
@@ -395,7 +409,10 @@ function renderCTA() {
     <section class="cta-banner">
       <div class="container">
         <div class="cta-banner-inner">
-          <h2 class="cta-banner-title reveal-left">Ready to take the complexity<br>out of your business?</h2>
+          <div>
+            <div class="section-label" style="color:rgba(255,255,255,0.55);margin-bottom:14px">Get Started Today</div>
+            <h2 class="cta-banner-title reveal-left">Ready to take the complexity<br>out of your business?</h2>
+          </div>
           <div class="cta-banner-actions reveal-right">
             <a href="contact.html" class="btn-ghost">Book Free Consultation ${I.arrow}</a>
             <a href="${waHref(HC.hero.waMsg)}" class="btn-ghost" target="_blank" rel="noopener">${I.wa} WhatsApp</a>
@@ -412,6 +429,7 @@ function renderFAQ() {
     <section class="faq-section section">
       <div class="container">
         <div class="faq-hdr">
+          <div class="section-label">Common Questions</div>
           <h2 class="section-title reveal">Frequently Asked Questions</h2>
         </div>
         <div class="faq-list">
