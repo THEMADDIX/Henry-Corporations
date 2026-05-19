@@ -195,9 +195,14 @@ ul { list-style: none; }
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 12px;
   text-decoration: none;
   flex-shrink: 0;
+}
+.nav-logo-img {
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 .nav-logo-mark {
   width: 36px; height: 36px;
@@ -1196,6 +1201,13 @@ ul { list-style: none; }
   margin-bottom: 64px;
   padding-bottom: 64px;
   border-bottom: 1px solid rgba(255,255,255,0.18);
+}
+.footer-logo-img {
+  height: 90px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 20px;
 }
 .footer-logo-text {
   font-family: var(--serif);
