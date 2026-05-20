@@ -271,9 +271,10 @@ function renderServiceCard(s, j, categoryId) {
   const cardId = `${categoryId}-${j}`;
   return `
     <div class="svc-card-full reveal reveal-d${j + 1}" data-id="${cardId}">
-      <div class="svc-card-n">0${j + 1}</div>
+      ${s.icon ? `<div class="svc-card-icon">${s.icon}</div>` : `<div class="svc-card-n">0${j + 1}</div>`}
       <h3 class="svc-card-title">${s.title}</h3>
       <p class="svc-card-desc">${s.desc}</p>
+      ${s.detail && s.detail.pricing ? `<div class="svc-card-price">${s.detail.pricing}</div>` : ''}
       <div class="svc-card-footer">
         <a href="${s.link}" class="svc-card-lnk">${s.linkText} ${I.arrow}</a>
         ${s.detail ? `<button class="svc-detail-btn" aria-expanded="false" aria-controls="detail-${cardId}">Details ${I.plus}</button>` : ''}
@@ -603,24 +604,46 @@ function renderPlatformGrid() {
 /* ── Footer ─────────────────────────────────────────────── */
 function renderFooter() {
   document.getElementById('footer-root').innerHTML = `
+    <div class="footer-cta-strip">
+      <div class="container">
+        <div class="footer-cta-inner">
+          <div>
+            <div class="footer-cta-label">Ready to get started?</div>
+            <div class="footer-cta-title">Book a free 30-minute consultation today</div>
+          </div>
+          <div class="footer-cta-actions">
+            <a href="contact.html" class="btn-ghost">Book Consultation ${I.arrow}</a>
+            <a href="${waHref(HC.hero.waMsg)}" class="btn-ghost" target="_blank" rel="noopener">${I.wa} WhatsApp Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
           <img src="assets/logo.png" alt="${HC.company.name}" class="footer-logo-img" />
-          <p class="footer-tagline">${HC.company.footerDesc.slice(0, 130)}…</p>
-          <a href="${waHref(HC.hero.waMsg)}" class="btn-ghost" target="_blank" rel="noopener"
-             style="font-size:0.7rem;padding:11px 20px">${I.wa} WhatsApp Us</a>
+          <p class="footer-tagline">${HC.company.footerDesc.slice(0, 160)}…</p>
+          <div class="footer-contact-block">
+            <a href="${HC.company.phoneTel}" class="footer-contact-item">${I.phone} ${HC.company.phone}</a>
+            <a href="mailto:${HC.company.email}" class="footer-contact-item">${I.mail} ${HC.company.email}</a>
+          </div>
         </div>
         <div>
-          <div class="footer-col-title">Services</div>
+          <div class="footer-col-title">🇮🇳 India Services</div>
           <ul class="footer-links">
-            ${HC.footerLinks.services.map(l => `<li><a href="${l.href}">${l.label}</a></li>`).join('')}
+            ${HC.footerLinks.india.map(l => `<li><a href="${l.href}">${l.label}</a></li>`).join('')}
           </ul>
         </div>
         <div>
-          <div class="footer-col-title">Platforms</div>
+          <div class="footer-col-title">🇦🇪 UAE Services</div>
           <ul class="footer-links">
-            ${HC.footerLinks.platforms.map(l => `<li><a href="${l.href}">${l.label}</a></li>`).join('')}
+            ${HC.footerLinks.uae.map(l => `<li><a href="${l.href}">${l.label}</a></li>`).join('')}
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">🛒 E-Commerce</div>
+          <ul class="footer-links">
+            ${HC.footerLinks.ecommerce.map(l => `<li><a href="${l.href}">${l.label}</a></li>`).join('')}
           </ul>
         </div>
         <div>
@@ -628,13 +651,16 @@ function renderFooter() {
           <ul class="footer-links">
             ${HC.footerLinks.company.map(l => `<li><a href="${l.href}">${l.label}</a></li>`).join('')}
           </ul>
+          <div class="footer-hours-wrap">${I.clock} <span>${HC.company.hours}</span></div>
         </div>
       </div>
       <div class="footer-bottom">
         <div class="footer-copy">© <span id="footer-year"></span> ${HC.company.name}. All rights reserved.</div>
-        <div class="footer-contact-links">
-          <a href="${HC.company.phoneTel}">${HC.company.phone}</a>
-          <a href="mailto:${HC.company.email}">${HC.company.email}</a>
+        <div class="footer-trust-badges">
+          <span class="ftb">GST Compliant Agency</span>
+          <span class="ftb">FTA Registered</span>
+          <span class="ftb">500+ Businesses Served</span>
+          <span class="ftb">India & UAE</span>
         </div>
       </div>
     </div>
