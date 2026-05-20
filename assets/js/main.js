@@ -702,10 +702,205 @@ function renderServicesPage() {
   ].join('');
 }
 
+/* ── Why Sell Globally ─────────────────────────────────── */
+function renderWhySellGlobally() {
+  return `
+    <section class="section wsg-section">
+      <div class="container">
+        <div class="wsg-hdr">
+          <div class="eyebrow">Why Go Global?</div>
+          <h2 class="wsg-title">6 Reasons Indian Brands Are Selling Worldwide</h2>
+          <p class="wsg-sub">The global e-commerce opportunity for Indian brands has never been larger. Here's why smart businesses are expanding now.</p>
+        </div>
+        <div class="wsg-grid">
+          ${HC.whySellGlobally.map((w, i) => `
+            <div class="wsg-card reveal reveal-d${(i % 3) + 1}">
+              <div class="wsg-icon">${w.icon}</div>
+              <div class="wsg-stat">${w.stat}</div>
+              <div class="wsg-label">${w.label}</div>
+              <p class="wsg-desc">${w.desc}</p>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+/* ── Export Process ────────────────────────────────────── */
+function renderExportProcess() {
+  return `
+    <section class="section ep-section">
+      <div class="container">
+        <div class="ep-hdr">
+          <div class="eyebrow">How It Works</div>
+          <h2 class="ep-title">Your 8-Step Journey to Global Markets</h2>
+          <p class="ep-sub">From assessment to launch — we handle everything so you can focus on your products.</p>
+        </div>
+        <div class="ep-grid">
+          ${HC.exportProcess.map((p, i) => `
+            <div class="ep-step reveal reveal-d${(i % 4) + 1}">
+              <div class="ep-step-num">${p.step}</div>
+              <h3 class="ep-step-title">${p.title}</h3>
+              <p class="ep-step-desc">${p.desc}</p>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+/* ── D2C Global ────────────────────────────────────────── */
+function renderD2CGlobal() {
+  return `
+    <section class="section d2c-section">
+      <div class="container">
+        <div class="d2c-hdr">
+          <div class="eyebrow">D2C Global</div>
+          <h2 class="d2c-title">Direct-to-Consumer Global Expansion</h2>
+          <p class="d2c-sub">Build your own global brand — sell directly to international customers through your own store and social channels, not just marketplaces.</p>
+        </div>
+        <div class="d2c-grid">
+          ${HC.d2cGlobal.map((s, i) => `
+            <div class="d2c-card reveal reveal-d${(i % 4) + 1}">
+              <div class="d2c-icon">${s.icon}</div>
+              <h3 class="d2c-card-title">${s.title}</h3>
+              <p class="d2c-card-desc">${s.desc}</p>
+              <span class="d2c-price">${s.pricing}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+/* ── B2B Export ────────────────────────────────────────── */
+function renderB2BExport() {
+  return `
+    <section class="section b2b-section">
+      <div class="container">
+        <div class="b2b-hdr">
+          <div class="eyebrow">B2B Export</div>
+          <h2 class="b2b-title">B2B Export & Wholesale Services</h2>
+          <p class="b2b-sub">Beyond retail marketplaces — unlock wholesale and B2B export opportunities through Alibaba, international buyer networks and direct export channels.</p>
+        </div>
+        <div class="b2b-grid">
+          ${HC.b2bExport.map((s, i) => `
+            <div class="b2b-card reveal reveal-d${(i % 4) + 1}">
+              <div class="b2b-icon">${s.icon}</div>
+              <h3 class="b2b-card-title">${s.title}</h3>
+              <p class="b2b-card-desc">${s.desc}</p>
+              <span class="b2b-price">${s.pricing}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+/* ── Country Markets ───────────────────────────────────── */
+function renderCountryDetailPanel(d, countryId) {
+  return `
+    <div class="cm-detail-panel" id="cm-detail-${countryId}" hidden>
+      <div class="cm-detail-inner">
+        <div class="cm-detail-overview">
+          <div class="cm-detail-label">Overview</div>
+          <p class="cm-detail-text">${d.overview}</p>
+        </div>
+        <div class="cm-detail-grid">
+          <div class="cm-detail-col">
+            <div class="cm-detail-label">Eligibility Requirements</div>
+            <ul class="cm-detail-list">
+              ${d.eligibility.map(e => `<li>${I.check} ${e}</li>`).join('')}
+            </ul>
+          </div>
+          <div class="cm-detail-col">
+            <div class="cm-detail-label">Documents Required</div>
+            <ul class="cm-detail-list">
+              ${d.documents.map(doc => `<li>${I.check} ${doc}</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+        <div class="cm-detail-process">
+          <div class="cm-detail-label">Setup Process</div>
+          <ol class="cm-process-list">
+            ${d.process.map((step, i) => `<li><span class="cm-step-num">${String(i + 1).padStart(2, '0')}</span>${step}</li>`).join('')}
+          </ol>
+        </div>
+        <div class="cm-detail-grid cm-detail-grid--3">
+          <div class="cm-detail-info-box">
+            <div class="cm-detail-label">VAT / Tax</div>
+            <p class="cm-detail-text cm-detail-text--sm">${d.vatInfo}</p>
+          </div>
+          <div class="cm-detail-info-box">
+            <div class="cm-detail-label">Logistics</div>
+            <p class="cm-detail-text cm-detail-text--sm">${d.logistics}</p>
+          </div>
+          <div class="cm-detail-info-box cm-detail-info-box--cta">
+            <div class="cm-detail-label">Timeline & Pricing</div>
+            <div class="cm-meta-badges">
+              <span class="cm-badge cm-badge--time">${I.clock} ${d.timeline}</span>
+              <span class="cm-badge cm-badge--price">${d.pricing}</span>
+            </div>
+            <a href="contact.html" class="btn-solid-coral cm-cta-btn">Start Expansion ${I.arrow}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderCountryMarkets() {
+  return `
+    <section class="section cm-section">
+      <div class="container">
+        <div class="cm-hdr">
+          <div class="eyebrow">Country-by-Country Expansion</div>
+          <h2 class="cm-title">Choose Your Target Market</h2>
+          <p class="cm-sub">Click any country to see platforms, compliance requirements, setup process, VAT details, logistics and pricing — everything you need to expand there.</p>
+        </div>
+        <div class="cm-list">
+          ${HC.countryMarkets.map((c, i) => `
+            <div class="cm-card reveal reveal-d${(i % 3) + 1}" data-country="${c.id}">
+              <button class="cm-card-header" aria-expanded="false" aria-controls="cm-detail-${c.id}">
+                <div class="cm-card-header-left">
+                  <span class="cm-flag">${c.flag}</span>
+                  <div class="cm-card-info">
+                    <span class="cm-country-name">${c.name}</span>
+                    <span class="cm-region">${c.region}</span>
+                  </div>
+                  <span class="cm-tagline">${c.tagline}</span>
+                </div>
+                <div class="cm-card-header-right">
+                  <div class="cm-platform-tags">
+                    ${c.platforms.slice(0, 3).map(p => `<span class="cm-platform-tag">${p}</span>`).join('')}
+                    ${c.platforms.length > 3 ? `<span class="cm-platform-tag cm-platform-tag--more">+${c.platforms.length - 3} more</span>` : ''}
+                  </div>
+                  <span class="cm-toggle-icon">${I.plus}</span>
+                </div>
+              </button>
+              <div class="cm-card-intro">${c.intro}</div>
+              ${renderCountryDetailPanel(c.detail, c.id)}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+  `;
+}
+
 function renderPlatformsPage() {
   document.getElementById('main-root').innerHTML = [
     renderPageHero('platforms'),
     renderMarquee(),
+    renderWhySellGlobally(),
+    renderCountryMarkets(),
+    renderD2CGlobal(),
+    renderB2BExport(),
+    renderExportProcess(),
     renderPlatformGrid(),
     renderStats(),
     renderCTA(),
@@ -965,6 +1160,52 @@ function initContactSlider() {
   backBtn.addEventListener('click', () => { if (step > 0) goTo(step - 1); });
 }
 
+function initCountryAccordions() {
+  document.querySelectorAll('.cm-card-header').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card   = btn.closest('.cm-card');
+      const panel  = card.querySelector('.cm-detail-panel');
+      const intro  = card.querySelector('.cm-card-intro');
+      if (!panel) return;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      // close all open panels
+      document.querySelectorAll('.cm-card-header[aria-expanded="true"]').forEach(b => {
+        if (b === btn) return;
+        b.setAttribute('aria-expanded', 'false');
+        b.querySelector('.cm-toggle-icon').innerHTML = I.plus;
+        const p = b.closest('.cm-card').querySelector('.cm-detail-panel');
+        const intro2 = b.closest('.cm-card').querySelector('.cm-card-intro');
+        if (p) { p.style.maxHeight = '0'; setTimeout(() => { p.hidden = true; }, 400); }
+        if (intro2) intro2.style.maxHeight = '0';
+      });
+
+      if (isOpen) {
+        btn.setAttribute('aria-expanded', 'false');
+        btn.querySelector('.cm-toggle-icon').innerHTML = I.plus;
+        panel.style.maxHeight = '0';
+        if (intro) intro.style.maxHeight = '0';
+        setTimeout(() => { panel.hidden = true; }, 400);
+      } else {
+        btn.setAttribute('aria-expanded', 'true');
+        btn.querySelector('.cm-toggle-icon').innerHTML = I.minus || '−';
+        panel.hidden = false;
+        if (intro) {
+          intro.style.maxHeight = intro.scrollHeight + 'px';
+        }
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+            panel.addEventListener('transitionend', () => {
+              if (btn.getAttribute('aria-expanded') === 'true') panel.style.maxHeight = 'none';
+            }, { once: true });
+          });
+        });
+      }
+    });
+  });
+}
+
 /* ── Init ───────────────────────────────────────────────── */
 function init() {
   renderMeta();
@@ -996,6 +1237,7 @@ function init() {
   initMobileMenu();
   initStatCounters();
   if (PAGE === 'contact' || PAGE === 'home') initContactSlider();
+  if (PAGE === 'platforms') initCountryAccordions();
 }
 
 document.addEventListener('DOMContentLoaded', init);
