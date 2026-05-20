@@ -231,6 +231,57 @@ function renderServicesIntro() {
   `;
 }
 
+/* ── Service Detail Panel ───────────────────────────────── */
+function renderDetailPanel(d, cardId) {
+  return `
+    <div class="svc-detail-panel" id="detail-${cardId}" hidden>
+      <div class="sdp-overview">
+        <div class="sdp-section-label">Overview</div>
+        <p class="sdp-overview-text">${d.overview}</p>
+      </div>
+      <div class="sdp-two-col">
+        <div class="sdp-col">
+          <div class="sdp-section-label">What's Included</div>
+          <ul class="sdp-list">
+            ${d.includes.map(item => `<li>${I.check} ${item}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="sdp-col">
+          <div class="sdp-section-label">Documents Needed</div>
+          <ul class="sdp-list">
+            ${d.documents.map(doc => `<li>${I.check} ${doc}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+      <div class="sdp-process">
+        <div class="sdp-section-label">Process</div>
+        <ol class="sdp-process-list">
+          ${d.process.map((step, i) => `<li><span class="sdp-step-num">${String(i + 1).padStart(2, '0')}</span>${step}</li>`).join('')}
+        </ol>
+      </div>
+      <div class="sdp-meta">
+        <span class="sdp-badge sdp-badge--time">${I.clock} ${d.timeline}</span>
+        <span class="sdp-badge sdp-badge--price">${d.pricing}</span>
+      </div>
+      <a href="contact.html" class="sdp-cta">Book Free Consultation ${I.arrow}</a>
+    </div>`;
+}
+
+function renderServiceCard(s, j, categoryId) {
+  const cardId = `${categoryId}-${j}`;
+  return `
+    <div class="svc-card-full reveal reveal-d${j + 1}" data-id="${cardId}">
+      <div class="svc-card-n">0${j + 1}</div>
+      <h3 class="svc-card-title">${s.title}</h3>
+      <p class="svc-card-desc">${s.desc}</p>
+      <div class="svc-card-footer">
+        <a href="${s.link}" class="svc-card-lnk">${s.linkText} ${I.arrow}</a>
+        ${s.detail ? `<button class="svc-detail-btn" aria-expanded="false" aria-controls="detail-${cardId}">Details ${I.plus}</button>` : ''}
+      </div>
+      ${s.detail ? renderDetailPanel(s.detail, cardId) : ''}
+    </div>`;
+}
+
 /* ── Full Tabbed Services (black section) ───────────────── */
 function renderServices() {
   return `
@@ -249,13 +300,7 @@ function renderServices() {
               <p class="section-sub reveal reveal-d1" style="color:rgba(255,255,255,0.52)">${c.sub}</p>
             </div>
             <div class="svc-grid-full">
-              ${c.services.map((s, j) => `
-                <div class="svc-card-full reveal reveal-d${j + 1}">
-                  <div class="svc-card-n">0${j + 1}</div>
-                  <h3 class="svc-card-title">${s.title}</h3>
-                  <p class="svc-card-desc">${s.desc}</p>
-                  <a href="${s.link}" class="svc-card-lnk">${s.linkText} ${I.arrow}</a>
-                </div>`).join('')}
+              ${c.services.map((s, j) => renderServiceCard(s, j, c.id)).join('')}
             </div>
           </div>`).join('')}
       </div>
@@ -724,6 +769,60 @@ function initServiceTabs() {
           el.classList.remove('in');
           requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('in')));
         });
+        panel.querySelectorAll('.svc-detail-btn[aria-expanded="true"]').forEach(btn => {
+          btn.setAttribute('aria-expanded', 'false');
+          btn.innerHTML = `Details ${I.plus}`;
+          const p = btn.closest('.svc-card-full').querySelector('.svc-detail-panel');
+          if (p) { p.style.maxHeight = '0'; p.hidden = true; }
+        });
+      }
+    });
+  });
+}
+
+function initServiceDetails() {
+  document.querySelectorAll('.svc-detail-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const card   = btn.closest('.svc-card-full');
+      const panel  = card.querySelector('.svc-detail-panel');
+      if (!panel) return;
+
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      const grid = card.closest('.svc-grid-full');
+      if (grid) {
+        grid.querySelectorAll('.svc-detail-btn[aria-expanded="true"]').forEach(otherBtn => {
+          if (otherBtn === btn) return;
+          otherBtn.setAttribute('aria-expanded', 'false');
+          otherBtn.innerHTML = `Details ${I.plus}`;
+          const otherPanel = otherBtn.closest('.svc-card-full').querySelector('.svc-detail-panel');
+          if (otherPanel) {
+            otherPanel.style.maxHeight = '0';
+            setTimeout(() => { otherPanel.hidden = true; }, 450);
+          }
+        });
+      }
+
+      if (isOpen) {
+        btn.setAttribute('aria-expanded', 'false');
+        btn.innerHTML = `Details ${I.plus}`;
+        panel.style.maxHeight = '0';
+        setTimeout(() => { panel.hidden = true; }, 450);
+      } else {
+        panel.hidden = false;
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+          });
+        });
+        btn.setAttribute('aria-expanded', 'true');
+        btn.innerHTML = `Close ${I.plus}`;
+        panel.addEventListener('transitionend', () => {
+          if (btn.getAttribute('aria-expanded') === 'true') {
+            panel.style.maxHeight = 'none';
+          }
+        }, { once: true });
       }
     });
   });
@@ -865,7 +964,7 @@ function init() {
   if (PAGE === 'home') { initHeroHeadline(); initParallax(); initHeroScroll(); }
   else initHeroScroll();
   initReveal();
-  if (PAGE === 'services' || PAGE === 'home') initServiceTabs();
+  if (PAGE === 'services' || PAGE === 'home') { initServiceTabs(); initServiceDetails(); }
   initFAQ();
   initMobileMenu();
   initStatCounters();
