@@ -2020,3 +2020,164 @@ ul { list-style: none; }
   transition: background 0.2s;
 }
 .sdp-cta:hover { background: var(--coral-dark); }
+
+/* ═══════════════════════════════════════════════
+   SERVICE CARD — icon + pricing badge
+   ═══════════════════════════════════════════════ */
+.svc-card-icon {
+  width: 46px;
+  height: 46px;
+  background: rgba(232,70,74,0.08);
+  border: 1px solid rgba(232,70,74,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  transition: background 0.25s, border-color 0.25s;
+}
+.svc-card-icon svg {
+  stroke: rgba(232,70,74,0.85) !important;
+  fill: none !important;
+}
+.svc-card-full:hover .svc-card-icon {
+  background: rgba(232,70,74,0.14);
+  border-color: rgba(232,70,74,0.3);
+}
+.svc-card-price {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--coral);
+  opacity: 0.75;
+  border: 1px solid rgba(232,70,74,0.22);
+  padding: 3px 10px;
+  display: inline-block;
+  margin-bottom: 14px;
+  background: rgba(232,70,74,0.05);
+}
+
+/* ═══════════════════════════════════════════════
+   FOOTER — CTA strip + 5-column layout
+   ═══════════════════════════════════════════════ */
+.footer-cta-strip {
+  background: #0d0d0d;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 40px 0;
+}
+.footer-cta-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 48px;
+}
+.footer-cta-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 8px;
+}
+.footer-cta-title {
+  font-family: var(--serif);
+  font-size: clamp(1.2rem, 2.4vw, 1.9rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+}
+.footer-cta-actions {
+  display: flex;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.footer-top {
+  grid-template-columns: 1.35fr 0.85fr 0.85fr 0.85fr 0.85fr;
+  gap: 40px;
+}
+.footer-contact-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.62);
+  transition: color 0.2s;
+}
+.footer-contact-item:hover { color: var(--white); }
+.footer-contact-item svg { flex-shrink: 0; opacity: 0.7; }
+
+.footer-hours-wrap {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.35);
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.footer-hours-wrap svg { flex-shrink: 0; }
+
+.footer-trust-badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.ftb {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid rgba(255,255,255,0.16);
+  color: rgba(255,255,255,0.38);
+  white-space: nowrap;
+}
+
+/* Mobile: footer CTA strip */
+@media (max-width: 900px) {
+  .footer-cta-inner { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+@media (max-width: 768px) {
+  .footer-cta-strip { padding: 32px 0; }
+  .footer-cta-actions { flex-direction: column; gap: 10px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .footer-trust-badges { gap: 8px; }
+}
+@media (max-width: 480px) {
+  .footer-top { grid-template-columns: 1fr; gap: 24px; }
+  .footer-cta-title { font-size: 1.2rem; }
+}
+
+/* ═══════════════════════════════════════════════
+   HERO — better mobile height control
+   ═══════════════════════════════════════════════ */
+@supports (min-height: 100svh) {
+  .hero { min-height: 100svh; }
+}
+@media (max-width: 480px) {
+  .hero-headline-wrap { padding: calc(64px + 20px) 20px 0; }
+  .hero { min-height: unset; padding-bottom: 0; }
+}
+
+/* ═══════════════════════════════════════════════
+   SECTION DIVIDERS — subtle visual rhythm
+   ═══════════════════════════════════════════════ */
+.svc-intro { border-bottom: 1px solid var(--gray-light); }
+.why-section { border-bottom: 1px solid var(--gray-light); }
+.testi-section { border-bottom: 1px solid rgba(0,0,0,0.06); }
+
+/* ═══════════════════════════════════════════════
+   STATS — make numbers more impactful
+   ═══════════════════════════════════════════════ */
+.stat-num {
+  letter-spacing: -0.02em;
+}

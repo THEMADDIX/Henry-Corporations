@@ -735,6 +735,37 @@ const HC = {
 
   // ── Footer Links ─────────────────────────────────────────────────
   footerLinks: {
+    india: [
+      { label: 'GST Registration',        href: 'services.html' },
+      { label: 'GSTR-1 & GSTR-3B Filing', href: 'services.html' },
+      { label: 'ITR Filing',              href: 'services.html' },
+      { label: 'TDS/TCS Filing',          href: 'services.html' },
+      { label: 'Company Registration',    href: 'services.html' },
+      { label: 'Accounting & Bookkeeping',href: 'services.html' },
+    ],
+    uae: [
+      { label: 'UAE VAT Registration',    href: 'services.html' },
+      { label: 'VAT Return Filing',       href: 'services.html' },
+      { label: 'UAE Corporate Tax',       href: 'services.html' },
+      { label: 'LLC Formation UAE',       href: 'services.html' },
+      { label: 'UAE Bookkeeping',         href: 'services.html' },
+      { label: 'Import/Export Compliance',href: 'services.html' },
+    ],
+    ecommerce: [
+      { label: 'Amazon Seller Accounting',href: 'services.html' },
+      { label: 'Flipkart Compliance',     href: 'services.html' },
+      { label: 'Meesho GST Filing',       href: 'services.html' },
+      { label: 'Catalog Management',      href: 'services.html' },
+      { label: 'Inventory Accounting',    href: 'services.html' },
+      { label: 'Seller Account Mgmt',     href: 'services.html' },
+    ],
+    company: [
+      { label: 'Why Choose Us',  href: 'why-us.html'   },
+      { label: 'All Services',   href: 'services.html' },
+      { label: 'Pricing Plans',  href: 'pricing.html'  },
+      { label: 'FAQs',           href: 'pricing.html'  },
+      { label: 'Contact Us',     href: 'contact.html'  },
+    ],
     services: [
       { label: 'GST Registration',      href: 'services.html' },
       { label: 'UAE VAT Filing',         href: 'services.html' },
@@ -744,17 +775,11 @@ const HC = {
       { label: 'Company Registration',   href: 'services.html' },
     ],
     platforms: [
-      { label: 'Amazon India',    href: '#platforms' },
-      { label: 'Flipkart',        href: '#platforms' },
-      { label: 'Meesho',          href: '#platforms' },
-      { label: 'Myntra',          href: '#platforms' },
-      { label: 'Shopsy',          href: '#platforms' },
-    ],
-    company: [
-      { label: 'Why Choose Us',   href: '#why-us'    },
-      { label: 'Pricing',         href: '#pricing'   },
-      { label: 'FAQs',            href: '#faq'       },
-      { label: 'Contact Us',      href: '#contact'   },
+      { label: 'Amazon India',    href: 'platforms.html' },
+      { label: 'Flipkart',        href: 'platforms.html' },
+      { label: 'Meesho',          href: 'platforms.html' },
+      { label: 'Myntra',          href: 'platforms.html' },
+      { label: 'Shopsy',          href: 'platforms.html' },
     ],
   },
 
