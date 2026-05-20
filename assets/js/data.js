@@ -13,7 +13,7 @@ const HC = {
     name:        'Henry Corporation',
     shortName:   'Henry Corp',
     brandLetter: 'H',
-    tagline:     "India & UAE's Premier GST, VAT & E-Commerce Compliance Agency",
+    tagline:     "Sell Internationally. Grow Globally. — India's Premier Global E-Commerce Expansion & Compliance Agency",
     phone:       '+91 96933 34119',
     phoneTel:    'tel:+919693334119',
     email:       'aarif@henry-corporation.com',
@@ -25,16 +25,16 @@ const HC = {
     yearsExp:    5,
     gstFilings:  2000,
     accountsMgd: 500,
-    footerDesc:  'Henry Corporation is a premium global taxation, GST, VAT, and e-commerce compliance agency — serving Amazon, Flipkart, Meesho, Myntra, Alibaba sellers and UAE businesses with end-to-end compliance, accounting, and company formation services.',
+    footerDesc:  'Henry Corporation helps Indian businesses expand internationally — with global taxation, export compliance, UAE company formation, and international marketplace solutions across Amazon, Alibaba, Flipkart, Meesho, Myntra, and European markets.',
   },
 
   // ── SEO / Meta ───────────────────────────────────────────────────
   meta: {
-    title:         'Henry Corporation — GST Filing, UAE VAT & E-Commerce Compliance Agency | India & UAE',
-    description:   'Henry Corporation is a premium GST filing, UAE VAT, and e-commerce compliance agency. Serving Amazon, Flipkart, Meesho, Myntra & Alibaba sellers in India and UAE with expert taxation, accounting, company formation and compliance management.',
-    keywords:      'GST filing India, UAE VAT filing, Amazon seller accountant, ecommerce tax consultant, LLC formation UAE, Alibaba seller taxation, Flipkart compliance, ITR filing ecommerce, GSTR-1 GSTR-3B, UAE corporate tax, company registration India, Meesho GST filing, cross border ecommerce accounting, GST registration India, UAE VAT registration, TDS TCS reconciliation',
-    ogTitle:       'Henry Corporation — Global GST, VAT & E-Commerce Compliance Agency',
-    ogDescription: 'Premium compliance agency for India & UAE — GST filing, UAE VAT, Amazon & Alibaba seller accounting, company formation and e-commerce compliance.',
+    title:         'Henry Corporation — Global E-Commerce Expansion | GST, UAE VAT, Export Compliance | India',
+    description:   'Henry Corporation helps Indian manufacturers, D2C brands, MSMEs and exporters sell internationally through UAE, Europe, Amazon International, Alibaba and global marketplaces — with expert GST, UAE VAT, export compliance, and company formation services.',
+    keywords:      'global e-commerce expansion India, export compliance India, sell internationally from India, Amazon international seller India, UAE marketplace expansion, European marketplace India, Alibaba seller India, D2C global expansion, MSME export India, GST filing India, UAE VAT filing, Amazon seller accountant, ecommerce tax consultant, LLC formation UAE, ITR filing ecommerce, GSTR-1 GSTR-3B, UAE corporate tax, company registration India, cross border ecommerce accounting, GST registration India, UAE VAT registration',
+    ogTitle:       'Henry Corporation — Sell Internationally. Grow Globally.',
+    ogDescription: 'India\'s premier global e-commerce expansion agency — helping Indian brands expand to UAE, Europe, Amazon International, Alibaba and global marketplaces with full compliance support.',
   },
 
   // ── Navigation ───────────────────────────────────────────────────
@@ -48,23 +48,24 @@ const HC = {
 
   // ── Hero Section ─────────────────────────────────────────────────
   hero: {
-    badge:      'Trusted by 500+ Businesses Across India & UAE',
-    title:      'Global GST, VAT & <span class="coral">E-Commerce Compliance</span> Solutions',
-    sub:        'Helping Amazon, Flipkart, Meesho, Alibaba & UAE businesses with taxation, VAT filing, accounting, company formation, and compliance management.',
+    badge:      'Trusted by 500+ Businesses — India · UAE · Global Markets',
+    title:      'Sell Internationally. <span class="coral">Grow Globally.</span>',
+    tagline:    'India\'s Premier Global E-Commerce Expansion & Compliance Agency — UAE · Europe · Amazon International · Alibaba',
+    sub:        'Helping Indian manufacturers, D2C brands, exporters and MSMEs expand globally through UAE, European marketplaces, Amazon International, Alibaba and global D2C platforms — with full GST, VAT, and export compliance support.',
     ctaText:    'Book Free Consultation',
     ctaHref:    'contact.html',
     waText:     'WhatsApp Support',
     waMsg:      'Hi Henry Corporation, I need GST/VAT compliance and e-commerce services',
     trustBadges: [
-      { icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/></svg>`, label: 'GST Compliance' },
-      { icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>`, label: 'UAE VAT Filing' },
-      { icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>`, label: 'Amazon Seller Support' },
-      { icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>`, label: 'LLC Formation' },
+      { icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/></svg>`, label: 'GST & VAT Compliance' },
+      { icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>`, label: 'UAE Business Setup' },
+      { icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`, label: 'Global Marketplace' },
+      { icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>`, label: 'Export Consulting' },
     ],
     trustItems: [
-      { label: '500+ Businesses Served' },
-      { label: '5+ Years Expertise' },
-      { label: 'India & UAE Coverage' },
+      { label: '500+ Businesses Expanded Globally' },
+      { label: '5+ Years Cross-border Expertise' },
+      { label: 'India · UAE · Global Markets' },
     ],
     dashMetrics: [
       { label: 'Monthly Revenue',   value: '₹12.4L', delta: '↑ 23% MoM' },
@@ -79,23 +80,25 @@ const HC = {
   // ── Trust / Marquee ──────────────────────────────────────────────
   marquee: [
     { name: 'Amazon India',   color: '#FF9900' },
+    { name: 'Amazon UAE',     color: '#F59E0B' },
+    { name: 'Amazon Europe',  color: '#FF9900' },
     { name: 'Flipkart',       color: '#2874F0' },
     { name: 'Meesho',         color: '#F43397' },
     { name: 'Myntra',         color: '#FF3F6C' },
-    { name: 'Shopsy',         color: '#2874F0' },
-    { name: 'Shopify D2C',    color: '#96bf48' },
-    { name: 'Amazon UAE',     color: '#F59E0B' },
+    { name: 'Alibaba.com',    color: '#FF6A00' },
+    { name: 'Shopify Global', color: '#96bf48' },
     { name: 'UAE Noon',       color: '#10B981' },
-    { name: 'GST Filing',     color: '#6366F1' },
-    { name: 'TCS/TDS',        color: '#0B1F3A' },
+    { name: 'eBay Global',    color: '#E53238' },
+    { name: 'Etsy',           color: '#F56400' },
+    { name: 'GST Compliant',  color: '#6366F1' },
   ],
 
   // ── Statistics ───────────────────────────────────────────────────
   stats: [
-    { value: 500,  suffix: '+', label: 'GST Returns Filed',          sub: 'Accurate & On-Time'     },
-    { value: 100,  suffix: '+', label: 'E-Commerce Sellers Managed', sub: 'Across All Platforms'   },
-    { value: 5,    suffix: '+', label: 'Years of Expertise',         sub: 'India & UAE Operations' },
-    { value: 50,   suffix: '+', label: 'Business Formations Done',   sub: 'India & UAE Entities'   },
+    { value: 500,  suffix: '+', label: 'Businesses Served Globally',    sub: 'India, UAE & International'  },
+    { value: 100,  suffix: '+', label: 'International Sellers Managed', sub: 'Across 10+ Marketplaces'     },
+    { value: 5,    suffix: '+', label: 'Years of Global Expertise',     sub: 'Cross-border Compliance'     },
+    { value: 50,   suffix: '+', label: 'Cross-border Entities Formed',  sub: 'India & UAE Structures'      },
   ],
 
   // ── Service Categories ───────────────────────────────────────────
@@ -329,8 +332,8 @@ const HC = {
     {
       id:    'uae',
       label: '🇦🇪 UAE Services',
-      title: 'UAE VAT & Business Setup',
-      sub:   'Premium compliance and business formation services for UAE — VAT registration, corporate tax filing, LLC formation, and cross-border India↔UAE structuring.',
+      title: 'Expand Beyond Borders — UAE & International',
+      sub:   'Complete VAT, corporate tax, compliance, and international seller support for UAE and global marketplaces. From FTA VAT registration and LLC formation to cross-border India↔UAE↔Europe business structuring.',
       services: [
         {
           icon:  `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B1F3A" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
@@ -421,8 +424,8 @@ const HC = {
     {
       id:    'global',
       label: '🌐 Global Business',
-      title: 'Global Business Services',
-      sub:   'Cross-border compliance and advisory for sellers expanding globally — Alibaba, international taxation, multi-country accounting and business structuring.',
+      title: 'Helping Indian Brands Sell Worldwide',
+      sub:   'From export setup and compliance to marketplace onboarding and global taxation support — helping Indian manufacturers, D2C brands, wholesalers and MSMEs launch internationally on Amazon EU/UAE, Alibaba, Shopify Global, and European marketplaces.',
       services: [
         {
           icon:  `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B1F3A" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>`,
@@ -563,8 +566,8 @@ const HC = {
     },
     {
       emoji: '🌐',
-      title: 'India & UAE Coverage',
-      desc:  'Whether you sell in India or the UAE — we cover both markets with local expertise and cross-border advisory.',
+      title: 'India, UAE & Global Markets',
+      desc:  'From GST filing in India to UAE VAT, European marketplace compliance, Amazon International, and cross-border business structuring — one expert team for all markets.',
     },
   ],
 
@@ -786,16 +789,16 @@ const HC = {
   // ── Page Heroes ──────────────────────────────────────────────────
   pageHeroes: {
     services: {
-      title: 'Specialized Services.<br>Strategic Depth.',
-      sub:   'Henry Corporation delivers integrated e-commerce and financial compliance services — designed to handle the regulatory, operational and growth challenges that define your business.',
+      title: 'Global Services.<br>Complete Expertise.',
+      sub:   'Henry Corporation delivers integrated global compliance and e-commerce expansion services — from Indian GST and UAE VAT to Amazon International, European marketplaces, Alibaba, and cross-border business structuring.',
     },
     platforms: {
-      title: 'All Major Marketplaces.<br>One Expert Team.',
-      sub:   'From Amazon to Flipkart, Meesho to Myntra — we manage seller accounts, listings and compliance across every platform so you can focus on growth.',
+      title: 'All Marketplaces.<br>Worldwide.',
+      sub:   'From Amazon India to Amazon UAE & Europe, Flipkart to Alibaba.com — we manage seller accounts, listings and compliance across every marketplace globally so you can focus on growth.',
     },
     'why-us': {
-      title: 'Why 500+ Sellers<br>Choose Henry Corp.',
-      sub:   "We're not just a compliance firm — we're your complete e-commerce operations partner. Here's what makes us genuinely different.",
+      title: 'Why Growing Businesses<br>Choose Henry Corp.',
+      sub:   "We're not just a compliance firm — we're your complete international expansion partner for India, UAE, and global markets. Here's what makes us genuinely different.",
     },
     pricing: {
       title: 'Simple, Transparent<br>Pricing.',

@@ -89,6 +89,7 @@ function renderHero() {
       <div class="hero-bg" id="hero-bg"></div>
       <div class="hero-headline-wrap">
         <h1 class="hero-headline">${HC.hero.title}</h1>
+        ${HC.hero.tagline ? `<p class="hero-tagline">${HC.hero.tagline}</p>` : ''}
       </div>
       <div class="hero-bottom">
         <div class="reveal-left">
@@ -209,10 +210,10 @@ function renderServicesIntro() {
         <div class="svc-intro-header">
           <div>
             <div class="section-label">What We Do</div>
-            <h2 class="section-title reveal-left">GST, VAT & E-Commerce.<br>One Expert Team.</h2>
+            <h2 class="section-title reveal-left">From India to Global Markets.<br>One Expert Team.</h2>
           </div>
           <div class="svc-intro-right reveal-right">
-            <p class="section-sub">Henry Corporation delivers complete taxation and e-commerce compliance — GST filing, UAE VAT, Amazon seller accounting, LLC formation, and marketplace management across India and the UAE.</p>
+            <p class="section-sub">Henry Corporation helps Indian businesses expand internationally — GST, UAE VAT, Amazon International seller accounting, export compliance, LLC formation, and global marketplace management across India, UAE, Europe and beyond.</p>
             <br>
             <a href="platforms.html" class="link-text" style="color:var(--coral)">Explore All Services ${I.arrow}</a>
           </div>
@@ -316,8 +317,8 @@ function renderProblems() {
       <div class="container">
         <div class="prob-hdr">
           <div class="section-label light">Sound Familiar?</div>
-          <h2 class="section-title reveal">Struggling with these<br>common seller problems?</h2>
-          <p class="section-sub reveal reveal-d1" style="color:rgba(255,255,255,0.5)">Sound familiar? These are the exact challenges hundreds of Indian sellers face every month — until they find Henry Corporation.</p>
+          <h2 class="section-title reveal">Struggling with these<br>seller and export challenges?</h2>
+          <p class="section-sub reveal reveal-d1" style="color:rgba(255,255,255,0.5)">Sound familiar? These are the exact challenges hundreds of Indian sellers and exporters face every month — until they partner with Henry Corporation.</p>
         </div>
         <div class="prob-grid">
           ${HC.problems.map((p, i) => `
@@ -349,9 +350,9 @@ function renderWhyUs() {
         <div class="why-hdr">
           <div>
             <div class="section-label">Why Henry Corp</div>
-            <h2 class="section-title reveal-left">Why 500+ Sellers<br>Choose Henry Corporation</h2>
+            <h2 class="section-title reveal-left">Why Growing Businesses<br>Choose Henry Corporation</h2>
           </div>
-          <p class="section-sub reveal-right" style="max-width:380px;margin-top:0;align-self:flex-end">We're not just a compliance firm — we're your complete e-commerce operations partner.</p>
+          <p class="section-sub reveal-right" style="max-width:380px;margin-top:0;align-self:flex-end">We're not just a compliance firm — we're your complete international expansion partner for India, UAE, and global markets.</p>
         </div>
         <div class="why-grid">
           ${HC.whyUs.map((w, i) => `
@@ -373,7 +374,7 @@ function renderProcess() {
       <div class="container">
         <div class="process-hdr">
           <div class="section-label light">How It Works</div>
-          <h2 class="section-title reveal">From Sign-Up to Full<br>Management in Days</h2>
+          <h2 class="section-title reveal">From Consultation to<br>Global Expansion in Days</h2>
         </div>
         <div class="process-grid">
           ${HC.process.map((p, i) => `
@@ -457,7 +458,7 @@ function renderCTA() {
         <div class="cta-banner-inner">
           <div>
             <div class="section-label" style="color:rgba(255,255,255,0.55);margin-bottom:14px">Get Started Today</div>
-            <h2 class="cta-banner-title reveal-left">Ready to take the complexity<br>out of your business?</h2>
+            <h2 class="cta-banner-title reveal-left">Ready to Take Your<br>Business Global?</h2>
           </div>
           <div class="cta-banner-actions reveal-right">
             <a href="contact.html" class="btn-ghost">Book Free Consultation ${I.arrow}</a>
@@ -608,8 +609,8 @@ function renderFooter() {
       <div class="container">
         <div class="footer-cta-inner">
           <div>
-            <div class="footer-cta-label">Ready to get started?</div>
-            <div class="footer-cta-title">Book a free 30-minute consultation today</div>
+            <div class="footer-cta-label">Your Global Expansion Partner</div>
+            <div class="footer-cta-title">Ready to Take Your Business International?</div>
           </div>
           <div class="footer-cta-actions">
             <a href="contact.html" class="btn-ghost">Book Consultation ${I.arrow}</a>

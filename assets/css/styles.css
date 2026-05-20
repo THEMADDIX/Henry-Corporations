@@ -349,6 +349,18 @@ ul { list-style: none; }
 }
 .hero-headline.in { opacity: 1; transform: translateX(0); }
 
+/* Global positioning tagline below main headline */
+.hero-tagline {
+  font-size: clamp(0.78rem, 1.3vw, 0.92rem);
+  color: rgba(255,255,255,0.38);
+  margin-top: 20px;
+  max-width: 640px;
+  line-height: 1.65;
+  letter-spacing: 0.03em;
+}
+@media (max-width: 768px) { .hero-tagline { font-size: 0.78rem; margin-top: 14px; } }
+@media (max-width: 480px) { .hero-tagline { display: none; } }
+
 /* Rule with coral dots */
 .hero-rule {
   width: 100%;
