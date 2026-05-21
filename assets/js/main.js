@@ -24,7 +24,6 @@ function waHref(msg) {
 
 /* ── Meta / SEO ─────────────────────────────────────────── */
 function renderMeta() {
-  document.title = HC.meta.title;
   const setMeta = (name, content, prop) => {
     let el = document.querySelector(prop ? `meta[property="${name}"]` : `meta[name="${name}"]`);
     if (!el) {
@@ -34,22 +33,110 @@ function renderMeta() {
     }
     el.setAttribute('content', content);
   };
-  setMeta('description',   HC.meta.description);
-  setMeta('keywords',      HC.meta.keywords);
-  setMeta('og:title',      HC.meta.ogTitle,       true);
-  setMeta('og:description',HC.meta.ogDescription, true);
-  setMeta('og:type',       'website',             true);
 
-  const schema = {
-    '@context': 'https://schema.org',
-    '@type':    'ProfessionalService',
-    name:        HC.company.name,
-    description: HC.meta.description,
-    telephone:   HC.company.phoneTel,
-    email:       HC.company.email,
-    areaServed:  ['IN', 'AE'],
+  const pageMeta = {
+    home: {
+      title: HC.meta.title,
+      desc:  HC.meta.description,
+      ogTitle: HC.meta.ogTitle,
+      ogDesc:  HC.meta.ogDescription,
+    },
+    services: {
+      title: 'Services — GST, UAE VAT, E-Commerce & Export Consulting | Henry Corporation',
+      desc:  'Complete compliance and growth services for Indian businesses — GST, UAE VAT, LLC formation, Amazon/Flipkart/Meesho seller management, and global export consulting.',
+      ogTitle: 'Services — Henry Corporation',
+      ogDesc:  'GST, UAE VAT, E-Commerce & Export Consulting Services',
+    },
+    platforms: {
+      title: 'Global Marketplaces — Amazon, UAE, Europe & Alibaba | Henry Corporation',
+      desc:  'Sell on Amazon International, Noon UAE, Bol.com, Allegro and more. Henry Corporation manages global marketplace expansion for Indian brands.',
+      ogTitle: 'Global Marketplaces — Henry Corporation',
+      ogDesc:  'Amazon, UAE, Europe & Global Marketplace Expansion',
+    },
+    'why-us': {
+      title: 'Why Choose Henry Corporation — Your Global Expansion Partner',
+      desc:  '500+ businesses served. 5+ years of expertise. Dedicated account managers. See why Indian businesses choose Henry Corporation.',
+      ogTitle: 'Why Choose Henry Corporation',
+      ogDesc:  '500+ businesses served. Your global expansion partner.',
+    },
+    pricing: {
+      title: 'Pricing Plans — GST, E-Commerce & UAE Services | Henry Corporation',
+      desc:  'Simple, transparent pricing for GST filing, e-commerce seller management, and UAE services. Starter from ₹2,999/month. No hidden fees.',
+      ogTitle: 'Pricing — Henry Corporation | Starting ₹2,999/month',
+      ogDesc:  'Transparent pricing for GST, UAE VAT, and e-commerce management.',
+    },
+    contact: {
+      title: 'Contact Us — Book a Free Consultation | Henry Corporation',
+      desc:  'Book a free 30-minute consultation with Henry Corporation. Expert help with GST, UAE VAT, Amazon seller management, and global business expansion.',
+      ogTitle: 'Contact Henry Corporation — Free Consultation',
+      ogDesc:  'Book a free consultation. Expert GST, UAE VAT, and export consulting.',
+    },
   };
-  document.getElementById('schema-ld').textContent = JSON.stringify(schema);
+
+  const m = pageMeta[PAGE] || pageMeta.home;
+  document.title = m.title;
+  setMeta('description',    m.desc);
+  setMeta('keywords',       HC.meta.keywords);
+  setMeta('og:title',       m.ogTitle,  true);
+  setMeta('og:description', m.ogDesc,   true);
+  setMeta('og:type',        'website',  true);
+  setMeta('og:image',       'https://henry-corporation.com/assets/logo.png', true);
+  setMeta('og:site_name',   HC.company.name, true);
+  setMeta('twitter:card',   'summary_large_image');
+  setMeta('twitter:title',  m.ogTitle);
+  setMeta('twitter:description', m.ogDesc);
+  setMeta('twitter:image',  'https://henry-corporation.com/assets/logo.png');
+
+  const baseSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type':   ['LocalBusiness', 'ProfessionalService'],
+        '@id':     'https://henry-corporation.com/#business',
+        name:       HC.company.name,
+        description: HC.meta.description,
+        url:        'https://henry-corporation.com',
+        telephone:  HC.company.phone,
+        email:      HC.company.email,
+        address: {
+          '@type':         'PostalAddress',
+          addressCountry:  'IN',
+          addressRegion:   'India',
+        },
+        areaServed: [
+          { '@type': 'Country', name: 'India' },
+          { '@type': 'Country', name: 'United Arab Emirates' },
+        ],
+        openingHours: 'Mo-Sa 10:00-19:00',
+        sameAs: Object.values(HC.company.social || {}),
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name:    'Global E-Commerce & Compliance Services',
+        },
+      },
+      {
+        '@type': 'WebSite',
+        '@id':   'https://henry-corporation.com/#website',
+        url:     'https://henry-corporation.com',
+        name:    HC.company.name,
+        description: HC.company.tagline,
+      },
+    ],
+  };
+
+  if (PAGE === 'pricing' && HC.faqs && HC.faqs.length) {
+    baseSchema['@graph'].push({
+      '@type': 'FAQPage',
+      mainEntity: HC.faqs.map(f => ({
+        '@type':          'Question',
+        name:             f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    });
+  }
+
+  const schemaEl = document.getElementById('schema-ld');
+  if (schemaEl) schemaEl.textContent = JSON.stringify(baseSchema);
 }
 
 /* ── Nav ────────────────────────────────────────────────── */
@@ -494,19 +581,46 @@ function renderFAQ() {
   `;
 }
 
-/* ── Contact — ROEH 3-step slider ───────────────────────── */
+/* ── Contact — Enhanced 3-step form ─────────────────────── */
 function renderContact() {
   const steps = [
-    { label: 'Step 1 of 3 — Your marketplace', title: 'Where do you sell?',            type: 'btns', key: 'marketplace', items: HC.contactForm.marketplaces },
-    { label: 'Step 2 of 3 — Service needed',   title: 'What do you need help with?',   type: 'btns', key: 'service',     items: HC.contactForm.services },
-    { label: 'Step 3 of 3 — Your details',     title: 'How should we reach you?',      type: 'form' },
+    { label: 'Step 1 of 3 — Your marketplace', title: 'Where do you sell?',          type: 'btns', key: 'marketplace', items: HC.contactForm.marketplaces },
+    { label: 'Step 2 of 3 — Service needed',   title: 'What do you need help with?', type: 'btns', key: 'service',     items: HC.contactForm.services },
+    { label: 'Step 3 of 3 — Your details',     title: 'How should we reach you?',    type: 'form' },
   ];
+
+  const directActionsHtml = `
+    <div class="cs-direct-actions">
+      <a href="${waHref('Hi Henry Corporation, I would like to book a free consultation')}" class="cs-direct-btn cs-direct-wa" target="_blank" rel="noopener">
+        ${I.wa}
+        <span>
+          <span class="cs-direct-label">WhatsApp Us Now</span>
+          <span class="cs-direct-sub">Typically replies in &lt; 1 hour</span>
+        </span>
+      </a>
+      <a href="${HC.company.phoneTel}" class="cs-direct-btn cs-direct-call">
+        ${I.phone}
+        <span>
+          <span class="cs-direct-label">Call Us</span>
+          <span class="cs-direct-sub">${HC.company.phone}</span>
+        </span>
+      </a>
+      <a href="mailto:${HC.company.email}" class="cs-direct-btn cs-direct-mail">
+        ${I.mail}
+        <span>
+          <span class="cs-direct-label">Email Us</span>
+          <span class="cs-direct-sub">${HC.company.email}</span>
+        </span>
+      </a>
+    </div>
+  `;
 
   return `
     <section class="contact-section" id="contact">
       <div class="cs-left">
-        <h2 class="cs-left-title reveal-left">Get in Touch<br>with Us</h2>
-        <p class="cs-left-sub reveal-left reveal-d1">We're ready to handle your GST, accounts, marketplace management and growth — start with a free consultation.</p>
+        <div class="section-label light">Free Consultation</div>
+        <h2 class="cs-left-title reveal-left">Let's Grow Your<br>Business Globally</h2>
+        <p class="cs-left-sub reveal-left reveal-d1">Fill the form and we'll get back to you within 2 business hours — or reach out directly via WhatsApp for an instant response.</p>
         <div class="cs-contact-info reveal-left reveal-d2">
           <div class="cs-info-item">
             <div class="cs-info-icon">${I.phone}</div>
@@ -530,6 +644,11 @@ function renderContact() {
             </div>
           </div>
         </div>
+        <div class="cs-trust-row reveal-left reveal-d3">
+          <span class="cs-trust-item">✓ Free 30-min Consultation</span>
+          <span class="cs-trust-item">✓ Response within 2 hours</span>
+          <span class="cs-trust-item">✓ 500+ Businesses Served</span>
+        </div>
       </div>
 
       <div class="cs-right">
@@ -550,26 +669,71 @@ function renderContact() {
               </div>
             ` : `
               <div class="cs-form">
-                <div class="cs-form-group">
-                  <label class="cs-form-label" for="cs-name">Your Name</label>
-                  <input class="cs-form-input" type="text" id="cs-name" placeholder="Rahul Sharma" />
+                <div class="cs-form-row">
+                  <div class="cs-form-group">
+                    <label class="cs-form-label" for="cs-name">Full Name <span class="cs-required">*</span></label>
+                    <input class="cs-form-input" type="text" id="cs-name" placeholder="Rahul Sharma" required />
+                  </div>
+                  <div class="cs-form-group">
+                    <label class="cs-form-label" for="cs-company">Company Name</label>
+                    <input class="cs-form-input" type="text" id="cs-company" placeholder="ABC Exports Pvt Ltd" />
+                  </div>
+                </div>
+                <div class="cs-form-row">
+                  <div class="cs-form-group">
+                    <label class="cs-form-label" for="cs-phone">Phone / WhatsApp <span class="cs-required">*</span></label>
+                    <input class="cs-form-input" type="tel" id="cs-phone" placeholder="+91 98765 43210" required />
+                  </div>
+                  <div class="cs-form-group">
+                    <label class="cs-form-label" for="cs-email">Email Address</label>
+                    <input class="cs-form-input" type="email" id="cs-email" placeholder="rahul@company.com" />
+                  </div>
+                </div>
+                <div class="cs-form-row">
+                  <div class="cs-form-group">
+                    <label class="cs-form-label" for="cs-product">Product Category</label>
+                    <select class="cs-form-input cs-form-select" id="cs-product">
+                      <option value="">Select category…</option>
+                      ${HC.contactForm.productCategories.map(c => `<option value="${c}">${c}</option>`).join('')}
+                    </select>
+                  </div>
+                  <div class="cs-form-group">
+                    <label class="cs-form-label" for="cs-country">Target Country</label>
+                    <select class="cs-form-input cs-form-select" id="cs-country">
+                      <option value="">Select country…</option>
+                      ${HC.contactForm.targetCountries.map(c => `<option value="${c}">${c}</option>`).join('')}
+                    </select>
+                  </div>
                 </div>
                 <div class="cs-form-group">
-                  <label class="cs-form-label" for="cs-phone">Phone / WhatsApp</label>
-                  <input class="cs-form-input" type="tel" id="cs-phone" placeholder="+91 98765 43210" />
+                  <label class="cs-form-label" for="cs-msg">Your Requirement</label>
+                  <textarea class="cs-form-input cs-form-textarea" id="cs-msg" placeholder="Tell us about your current situation, monthly turnover, specific challenge or goal…" rows="3"></textarea>
                 </div>
-                <div class="cs-form-group">
-                  <label class="cs-form-label" for="cs-msg">Anything else?</label>
-                  <input class="cs-form-input" type="text" id="cs-msg" placeholder="Monthly turnover, current issue..." />
-                </div>
+                <p class="cs-form-note">By submitting this form you agree to be contacted by Henry Corporation. We never share your data with third parties.</p>
               </div>
             `}
           </div>`).join('')}
 
-        <div class="cs-nav">
+        <div class="cs-slide cs-slide--success" data-step="3">
+          <div class="cs-success">
+            <div class="cs-success-icon">✓</div>
+            <h3 class="cs-success-title">Message Sent!</h3>
+            <p class="cs-success-sub">Thank you! We'll get back to you within 2 business hours. For an instant response, WhatsApp us directly.</p>
+            <a href="${waHref('Hi Henry Corporation, I just submitted a consultation request. Please get in touch!')}" class="btn-solid-coral" target="_blank" rel="noopener" style="margin-top:20px">${I.wa} WhatsApp Us Now</a>
+          </div>
+        </div>
+
+        <div class="cs-nav" id="cs-nav-row">
           <button class="cs-back-btn hidden" id="cs-back">← Back</button>
           <button class="cs-next-btn" id="cs-next">Next ${I.arrow}</button>
         </div>
+      </div>
+    </section>
+    <section class="section section-alt" style="padding:60px 0">
+      <div class="container">
+        <div class="section-label" style="justify-content:center;margin-bottom:8px">Or Reach Us Directly</div>
+        <h2 class="section-title reveal" style="text-align:center;margin-bottom:40px">Prefer to Connect Directly?</h2>
+        ${directActionsHtml}
       </div>
     </section>
   `;
@@ -604,6 +768,35 @@ function renderPlatformGrid() {
 
 /* ── Footer ─────────────────────────────────────────────── */
 function renderFooter() {
+  const socialLinks = HC.company.social ? `
+    <div class="footer-social">
+      <a href="${HC.company.social.linkedin}" target="_blank" rel="noopener noreferrer" aria-label="Henry Corporation on LinkedIn" class="footer-social-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="${HC.company.social.instagram}" target="_blank" rel="noopener noreferrer" aria-label="Henry Corporation on Instagram" class="footer-social-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="${HC.company.social.facebook}" target="_blank" rel="noopener noreferrer" aria-label="Henry Corporation on Facebook" class="footer-social-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      </a>
+      <a href="${HC.company.social.twitter}" target="_blank" rel="noopener noreferrer" aria-label="Henry Corporation on Twitter" class="footer-social-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+      </a>
+    </div>
+  ` : '';
+
+  const newsletterHtml = `
+    <div class="footer-newsletter">
+      <div class="footer-newsletter-title">Export Insights Newsletter</div>
+      <p class="footer-newsletter-sub">Monthly tips on GST, UAE VAT, global marketplace strategies, and export compliance — free.</p>
+      <form class="footer-newsletter-form" id="footer-newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+        <input type="email" class="footer-newsletter-input" placeholder="your@email.com" aria-label="Email for newsletter" required />
+        <button type="submit" class="footer-newsletter-btn">Subscribe ${I.arrow}</button>
+      </form>
+      <p class="footer-newsletter-note" id="newsletter-msg" hidden>✓ Subscribed! Check your inbox.</p>
+    </div>
+  `;
+
   document.getElementById('footer-root').innerHTML = `
     <div class="footer-cta-strip">
       <div class="container">
@@ -613,7 +806,7 @@ function renderFooter() {
             <div class="footer-cta-title">Ready to Take Your Business International?</div>
           </div>
           <div class="footer-cta-actions">
-            <a href="contact.html" class="btn-ghost">Book Consultation ${I.arrow}</a>
+            <a href="contact.html" class="btn-ghost">Book Free Consultation ${I.arrow}</a>
             <a href="${waHref(HC.hero.waMsg)}" class="btn-ghost" target="_blank" rel="noopener">${I.wa} WhatsApp Us</a>
           </div>
         </div>
@@ -622,12 +815,14 @@ function renderFooter() {
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <img src="assets/logo.png" alt="${HC.company.name}" class="footer-logo-img" />
+          <img src="assets/logo.png" alt="${HC.company.name} logo" class="footer-logo-img" loading="lazy" width="200" height="120" />
           <p class="footer-tagline">${HC.company.footerDesc.slice(0, 160)}…</p>
           <div class="footer-contact-block">
             <a href="${HC.company.phoneTel}" class="footer-contact-item">${I.phone} ${HC.company.phone}</a>
             <a href="mailto:${HC.company.email}" class="footer-contact-item">${I.mail} ${HC.company.email}</a>
+            <span class="footer-contact-item">${I.clock} ${HC.company.hours}</span>
           </div>
+          ${socialLinks}
         </div>
         <div>
           <div class="footer-col-title">🇮🇳 India Services</div>
@@ -652,19 +847,53 @@ function renderFooter() {
           <ul class="footer-links">
             ${HC.footerLinks.company.map(l => `<li><a href="${l.href}">${l.label}</a></li>`).join('')}
           </ul>
-          <div class="footer-hours-wrap">${I.clock} <span>${HC.company.hours}</span></div>
         </div>
       </div>
+      ${newsletterHtml}
       <div class="footer-bottom">
-        <div class="footer-copy">© <span id="footer-year"></span> ${HC.company.name}. All rights reserved.</div>
+        <div class="footer-copy">© <span id="footer-year"></span> ${HC.company.name}. All rights reserved. Serving businesses across India &amp; UAE.</div>
         <div class="footer-trust-badges">
           <span class="ftb">GST Compliant Agency</span>
           <span class="ftb">FTA Registered</span>
           <span class="ftb">500+ Businesses Served</span>
-          <span class="ftb">India & UAE</span>
+          <span class="ftb">India &amp; UAE</span>
         </div>
       </div>
     </div>
+  `;
+}
+
+function handleNewsletterSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const msg = document.getElementById('newsletter-msg');
+  if (msg) { msg.hidden = false; }
+  form.style.display = 'none';
+}
+
+/* ── Certifications / Trust Section ─────────────────────── */
+function renderCertifications() {
+  if (!HC.certifications || !HC.certifications.length) return '';
+  return `
+    <section class="certs-section section-alt section">
+      <div class="container">
+        <div class="certs-inner">
+          <div class="certs-left reveal-left">
+            <div class="section-label">Credentials & Trust</div>
+            <h2 class="section-title" style="font-size:clamp(1.6rem,3vw,2.4rem)">Registered,<br>Certified & Trusted</h2>
+            <p class="section-sub" style="margin-top:14px;font-size:0.88rem">Henry Corporation operates as a fully compliant professional services firm — registered with Indian and UAE regulatory bodies, serving 500+ businesses globally.</p>
+          </div>
+          <div class="certs-grid reveal-right">
+            ${HC.certifications.map(c => `
+              <div class="cert-card">
+                <div class="cert-icon">${c.icon}</div>
+                <div class="cert-label">${c.label}</div>
+                <div class="cert-desc">${c.desc}</div>
+              </div>`).join('')}
+          </div>
+        </div>
+      </div>
+    </section>
   `;
 }
 
@@ -687,6 +916,7 @@ function renderHomePage() {
     renderStats(),
     renderServicesIntro(),
     renderWhyUs(),
+    renderCertifications(),
     renderTestimonials(),
     renderCTA(),
   ].join('');
@@ -911,6 +1141,7 @@ function renderWhyUsPage() {
   document.getElementById('main-root').innerHTML = [
     renderPageHero('why-us'),
     renderWhyUs(),
+    renderCertifications(),
     renderTestimonials(),
     renderProcess(),
     renderCTA(),
@@ -1111,11 +1342,13 @@ function initStatCounters() {
 function initContactSlider() {
   let step = 0;
   const selections = {};
-  const slides   = document.querySelectorAll('.cs-slide');
+  const slides   = document.querySelectorAll('.cs-slide:not(.cs-slide--success)');
+  const successSlide = document.querySelector('.cs-slide--success');
   const counter  = document.getElementById('cs-counter');
   const promptEl = document.getElementById('cs-prompt');
   const nextBtn  = document.getElementById('cs-next');
   const backBtn  = document.getElementById('cs-back');
+  const navRow   = document.getElementById('cs-nav-row');
   if (!nextBtn || !slides.length) return;
 
   const prompts = [
@@ -1127,12 +1360,14 @@ function initContactSlider() {
   function goTo(n) {
     slides[step].classList.remove('active');
     step = n;
-    slides[step].classList.add('active');
-    counter.textContent  = `${step + 1} / 3`;
-    promptEl.textContent = prompts[step];
+    if (step < slides.length) {
+      slides[step].classList.add('active');
+    }
+    counter.textContent  = `${Math.min(step + 1, 3)} / 3`;
+    promptEl.textContent = prompts[Math.min(step, 2)];
     backBtn.classList.toggle('hidden', step === 0);
     nextBtn.innerHTML = step === 2
-      ? `Send via WhatsApp ${I.wa}`
+      ? `Send Enquiry ${I.arrow}`
       : `Next ${I.arrow}`;
   }
 
@@ -1142,19 +1377,51 @@ function initContactSlider() {
       document.querySelectorAll(`.cs-svc-btn[data-key="${key}"]`).forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
       selections[key] = btn.dataset.value;
+      setTimeout(() => { if (step < 2) goTo(step + 1); }, 280);
     });
   });
 
   nextBtn.addEventListener('click', () => {
     if (step < 2) {
       goTo(step + 1);
-    } else {
-      const name  = document.getElementById('cs-name')?.value  || '';
-      const phone = document.getElementById('cs-phone')?.value || '';
-      const msg   = document.getElementById('cs-msg')?.value   || '';
-      const text  = `Hi Henry Corporation!\n\nName: ${name}\nPhone: ${phone}\nMarketplace: ${selections.marketplace || '—'}\nService: ${selections.service || '—'}\nNote: ${msg}\n\nPlease get in touch!`;
-      window.open(waHref(text), '_blank', 'noopener');
+      return;
     }
+    const nameEl  = document.getElementById('cs-name');
+    const phoneEl = document.getElementById('cs-phone');
+    if (nameEl && !nameEl.value.trim()) { nameEl.focus(); nameEl.style.borderColor = 'var(--coral)'; return; }
+    if (phoneEl && !phoneEl.value.trim()) { phoneEl.focus(); phoneEl.style.borderColor = 'var(--coral)'; return; }
+
+    const name    = nameEl?.value || '';
+    const company = document.getElementById('cs-company')?.value || '';
+    const phone   = phoneEl?.value || '';
+    const email   = document.getElementById('cs-email')?.value || '';
+    const product = document.getElementById('cs-product')?.value || '';
+    const country = document.getElementById('cs-country')?.value || '';
+    const msg     = document.getElementById('cs-msg')?.value || '';
+
+    const text = [
+      `Hi Henry Corporation! I'd like to book a free consultation.`,
+      ``,
+      `Name: ${name}`,
+      company ? `Company: ${company}` : '',
+      `Phone: ${phone}`,
+      email ? `Email: ${email}` : '',
+      `Marketplace: ${selections.marketplace || '—'}`,
+      `Service Needed: ${selections.service || '—'}`,
+      product ? `Product Category: ${product}` : '',
+      country ? `Target Country: ${country}` : '',
+      msg ? `Requirement: ${msg}` : '',
+      ``,
+      `Please get in touch at your earliest convenience!`,
+    ].filter(Boolean).join('\n');
+
+    window.open(waHref(text), '_blank', 'noopener');
+
+    slides[step].classList.remove('active');
+    if (successSlide) successSlide.classList.add('active');
+    if (navRow) navRow.style.display = 'none';
+    counter.textContent = '✓ Done';
+    promptEl.textContent = 'Your message has been prepared';
   });
 
   backBtn.addEventListener('click', () => { if (step > 0) goTo(step - 1); });

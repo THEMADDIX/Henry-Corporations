@@ -20,12 +20,19 @@ const HC = {
     waNumber:    '919693334119',
     hours:       'Mon – Sat, 10:00 AM – 7:00 PM IST',
     location:    'India & UAE',
+    address:     'India (serving clients across all states) & UAE (Dubai)',
     gstin:       'GSTIN: Available on request',
     sellerCount: 500,
     yearsExp:    5,
     gstFilings:  2000,
     accountsMgd: 500,
     footerDesc:  'Henry Corporation helps Indian businesses expand internationally — with global taxation, export compliance, UAE company formation, and international marketplace solutions across Amazon, Alibaba, Flipkart, Meesho, Myntra, and European markets.',
+    social: {
+      linkedin:   'https://www.linkedin.com/company/henry-corporation',
+      instagram:  'https://www.instagram.com/henrycorporation',
+      facebook:   'https://www.facebook.com/henrycorporation',
+      twitter:    'https://twitter.com/henrycorpIN',
+    },
   },
 
   // ── SEO / Meta ───────────────────────────────────────────────────
@@ -732,9 +739,21 @@ const HC = {
 
   // ── Contact Form Options ─────────────────────────────────────────
   contactForm: {
-    marketplaces: ['Amazon', 'Flipkart', 'Meesho', 'Shopsy', 'Myntra', 'D2C / Shopify', 'UAE Marketplace', 'Multiple Platforms'],
-    services:     ['E-Commerce Seller Management', 'GST & Tax Filing', 'Accounting & Bookkeeping', 'UAE VAT Services', 'Loan & Project Reports', 'Complete Management Package'],
+    marketplaces: ['Amazon India', 'Amazon International', 'Flipkart', 'Meesho / Shopsy', 'Myntra', 'D2C / Shopify', 'Alibaba / B2B Export', 'UAE Marketplace (Noon / Amazon.ae)', 'Multiple Platforms'],
+    services:     ['E-Commerce Seller Management', 'GST Registration & Filing', 'ITR Filing', 'Accounting & Bookkeeping', 'UAE VAT Registration & Filing', 'UAE Company (LLC) Formation', 'Export Consulting & Compliance', 'Global Marketplace Expansion', 'Loan / Project Reports', 'Complete Management Package'],
+    productCategories: ['Electronics & Gadgets', 'Fashion & Apparel', 'Beauty & Personal Care', 'Home & Kitchen', 'Health & Wellness', 'Food & Grocery', 'Handicrafts & Decor', 'Industrial & B2B', 'Software / Services', 'Other'],
+    targetCountries: ['UAE (Dubai / Abu Dhabi)', 'United Kingdom', 'Germany', 'France', 'Netherlands', 'Italy', 'Spain', 'Poland', 'USA', 'Canada', 'Australia', 'Multiple Countries'],
   },
+
+  // ── Certifications / Trust Badges ───────────────────────────────
+  certifications: [
+    { label: 'IEC Holder',     desc: 'Import Export Code',          icon: '🌐' },
+    { label: 'GST Compliant',  desc: 'GST Registered Agency',       icon: '🇮🇳' },
+    { label: 'MSME Registered',desc: 'Udyam Certificate Holder',    icon: '🏭' },
+    { label: 'Startup India',  desc: 'DPIIT Recognised Startup',    icon: '🚀' },
+    { label: 'FTA Registered', desc: 'UAE Federal Tax Authority',   icon: '🇦🇪' },
+    { label: '500+ Clients',   desc: 'Businesses Served Globally',  icon: '🤝' },
+  ],
 
   // ── Footer Links ─────────────────────────────────────────────────
   footerLinks: {
@@ -768,6 +787,8 @@ const HC = {
       { label: 'Pricing Plans',  href: 'pricing.html'  },
       { label: 'FAQs',           href: 'pricing.html'  },
       { label: 'Contact Us',     href: 'contact.html'  },
+      { label: 'Privacy Policy', href: 'privacy.html'  },
+      { label: 'Terms & Conditions', href: 'terms.html'},
     ],
     services: [
       { label: 'GST Registration',      href: 'services.html' },
