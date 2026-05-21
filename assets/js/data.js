@@ -37,8 +37,8 @@ const HC = {
 
   // ── SEO / Meta ───────────────────────────────────────────────────
   meta: {
-    title:         'Henry Corporation — Global E-Commerce Expansion | GST, UAE VAT, Export Compliance | India',
-    description:   'Henry Corporation helps Indian manufacturers, D2C brands, MSMEs and exporters sell internationally through UAE, Europe, Amazon International, Alibaba and global marketplaces — with expert GST, UAE VAT, export compliance, and company formation services.',
+    title:         'Henry Corporation | Export Consulting & Global Business Expansion Services',
+    description:   'Helping businesses expand internationally through export consulting, global sourcing, buyer acquisition, market entry strategies, and international trade support. Serving India, UAE and global markets.',
     keywords:      'global e-commerce expansion India, export compliance India, sell internationally from India, Amazon international seller India, UAE marketplace expansion, European marketplace India, Alibaba seller India, D2C global expansion, MSME export India, GST filing India, UAE VAT filing, Amazon seller accountant, ecommerce tax consultant, LLC formation UAE, ITR filing ecommerce, GSTR-1 GSTR-3B, UAE corporate tax, company registration India, cross border ecommerce accounting, GST registration India, UAE VAT registration',
     ogTitle:       'Henry Corporation — Sell Internationally. Grow Globally.',
     ogDescription: 'India\'s premier global e-commerce expansion agency — helping Indian brands expand to UAE, Europe, Amazon International, Alibaba and global marketplaces with full compliance support.',
@@ -56,9 +56,9 @@ const HC = {
   // ── Hero Section ─────────────────────────────────────────────────
   hero: {
     badge:      'Trusted by 500+ Businesses — India · UAE · Global Markets',
-    title:      'Sell Internationally. <span class="coral">Grow Globally.</span>',
-    tagline:    'India\'s Premier Global E-Commerce Expansion & Compliance Agency — UAE · Europe · Amazon International · Alibaba',
-    sub:        'Helping Indian manufacturers, D2C brands, exporters and MSMEs expand globally through UAE, European marketplaces, Amazon International, Alibaba and global D2C platforms — with full GST, VAT, and export compliance support.',
+    title:      'Export Smarter. <span class="coral">Expand Globally.</span>',
+    tagline:    'India\'s Premier International Trade & Export Consulting Agency',
+    sub:        'Helping Indian manufacturers, suppliers, exporters, startups, and D2C brands connect with international markets through sourcing, trade consulting, buyer acquisition, and global expansion solutions.',
     ctaText:    'Book Free Consultation',
     ctaHref:    'contact.html',
     waText:     'WhatsApp Support',
@@ -102,10 +102,10 @@ const HC = {
 
   // ── Statistics ───────────────────────────────────────────────────
   stats: [
-    { value: 500,  suffix: '+', label: 'Businesses Served Globally',    sub: 'India, UAE & International'  },
-    { value: 100,  suffix: '+', label: 'International Sellers Managed', sub: 'Across 10+ Marketplaces'     },
-    { value: 5,    suffix: '+', label: 'Years of Global Expertise',     sub: 'Cross-border Compliance'     },
-    { value: 50,   suffix: '+', label: 'Cross-border Entities Formed',  sub: 'India & UAE Structures'      },
+    { value: 500,  suffix: '+', label: 'Supplier Connections',  sub: 'Verified Global Network'   },
+    { value: 20,   suffix: '+', label: 'Markets Reached',       sub: 'Across 5 Continents'        },
+    { value: 100,  suffix: '+', label: 'Export Consultations',  sub: 'Free Consultations Given'   },
+    { value: 50,   suffix: '+', label: 'Business Partnerships', sub: 'Active Trade Partners'      },
   ],
 
   // ── Service Categories ───────────────────────────────────────────
@@ -536,46 +536,12 @@ const HC = {
 
   // ── Why Choose Us ────────────────────────────────────────────────
   whyUs: [
-    {
-      emoji: '👤',
-      title: 'Dedicated Account Manager',
-      desc:  'One expert who knows your business, marketplaces and filing calendar. No handoffs, no re-explaining.',
-    },
-    {
-      emoji: '🛒',
-      title: 'Marketplace Specialists',
-      desc:  'Deep expertise in Amazon, Flipkart, Meesho, Myntra and Shopsy — each platform\'s unique rules and requirements.',
-    },
-    {
-      emoji: '⚡',
-      title: 'Fast Compliance Support',
-      desc:  'Urgent compliance cases, notices and suspensions handled within 24–48 hours. No delays when it matters.',
-    },
-    {
-      emoji: '💰',
-      title: 'Affordable & Transparent',
-      desc:  'Clear monthly pricing with no hidden charges. You know exactly what you\'re paying for every month.',
-    },
-    {
-      emoji: '🏆',
-      title: 'End-to-End Management',
-      desc:  'From product listing to GST filing to payout reconciliation — complete seller operations under one roof.',
-    },
-    {
-      emoji: '📊',
-      title: 'Data-Driven Growth',
-      desc:  'Monthly reports with actionable insights to improve your sales, margins and marketplace performance.',
-    },
-    {
-      emoji: '🔒',
-      title: 'Secure & Confidential',
-      desc:  'Your business data and marketplace credentials are handled with strict security and confidentiality protocols.',
-    },
-    {
-      emoji: '🌐',
-      title: 'India, UAE & Global Markets',
-      desc:  'From GST filing in India to UAE VAT, European marketplace compliance, Amazon International, and cross-border business structuring — one expert team for all markets.',
-    },
+    { emoji: '🌐', title: 'International Market Expertise',   desc: 'Deep knowledge of UAE, UK, EU and Asian markets — built from hands-on experience managing hundreds of successful international expansions for Indian businesses.' },
+    { emoji: '🎯', title: 'Personalised Business Strategies', desc: 'No generic templates. Every expansion roadmap is built specifically around your product, margins, target markets, and business goals — tailored for your success.' },
+    { emoji: '🔗', title: 'Global Sourcing Network',         desc: 'Access to a verified global network of buyers, distributors, importers, and marketplace partners across 20+ countries — built over 5+ years of cross-border trade.' },
+    { emoji: '📋', title: 'Export Documentation Support',    desc: 'End-to-end export documentation — IEC registration, LUT filing, DGFT compliance, commercial invoices, packing lists, certificates of origin, and FEMA compliance.' },
+    { emoji: '⚙️', title: 'Practical Implementation Guidance', desc: 'We don\'t just advise — we implement. From company registrations and marketplace setups to product listings, logistics, and ongoing compliance management.' },
+    { emoji: '🤝', title: 'Long-Term Partnership Approach',  desc: 'We grow with you — managing filings, accounts, and strategy as your global business scales. Your success is our success, and we invest in it for the long term.' },
   ],
 
   // ── Testimonials ─────────────────────────────────────────────────
@@ -632,10 +598,11 @@ const HC = {
 
   // ── Process Steps ────────────────────────────────────────────────
   process: [
-    { num: '01', title: 'Free Consultation',      desc: '30-minute call to understand your marketplace setup, scale and compliance gaps — completely free.' },
-    { num: '02', title: 'Secure Documentation',   desc: 'We collect GST credentials, marketplace logins and KYC on a 100% secure and encrypted channel.' },
-    { num: '03', title: 'Setup & Onboarding',     desc: 'Account audit, catalog cleanup, GST backlog clearance and a clean reconciliation baseline.' },
-    { num: '04', title: 'Monthly Management',     desc: 'Dedicated manager, monthly reports, proactive filings and continuous growth recommendations.' },
+    { num: '01', title: 'Consultation',          desc: 'A free 30-minute call to understand your business, products, current export status, and international expansion goals — zero obligation.' },
+    { num: '02', title: 'Opportunity Analysis',  desc: 'We analyse your product-market fit, target country opportunities, competition, compliance requirements, and realistic revenue potential.' },
+    { num: '03', title: 'Strategy Development',  desc: 'A custom global expansion roadmap — markets to target, platforms to use, compliance steps, realistic timelines, and cost projections.' },
+    { num: '04', title: 'Implementation Support',desc: 'Hands-on implementation — company registrations, tax filings, marketplace account creation, product listings, logistics setup, and documentation.' },
+    { num: '05', title: 'Growth & Expansion',    desc: 'Ongoing performance monitoring, compliance filings, account health management, and quarterly strategy reviews to accelerate global growth.' },
   ],
 
   // ── Pricing Plans ────────────────────────────────────────────────
@@ -789,6 +756,8 @@ const HC = {
       { label: 'Contact Us',     href: 'contact.html'  },
       { label: 'Privacy Policy', href: 'privacy.html'  },
       { label: 'Terms & Conditions', href: 'terms.html'},
+      { label: 'Refund Policy',  href: 'refund.html'  },
+      { label: 'Cookie Policy',  href: 'cookie.html'  },
     ],
     services: [
       { label: 'GST Registration',      href: 'services.html' },
