@@ -1,4 +1,18 @@
+# Henry Corporation — robots.txt
+# https://henry-corporation.com
+
 User-agent: *
 Allow: /
+Disallow: /backend/
+Disallow: /admin/
+Disallow: /*.json$
 
+# Crawl delay for aggressive crawlers
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+# Sitemap
 Sitemap: https://henry-corporation.com/sitemap.xml

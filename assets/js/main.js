@@ -5,6 +5,8 @@
 
 /* ── Page Detection ─────────────────────────────────────── */
 const PAGE = document.body.getAttribute('data-page') || 'home';
+const IS_BLOG_POST = PAGE === 'blog-post';
+const PATH_PREFIX  = IS_BLOG_POST ? '../' : '';
 
 /* ── Icons ─────────────────────────────────────────────── */
 const I = {
@@ -24,6 +26,10 @@ function waHref(msg) {
 
 /* ── Meta / SEO ─────────────────────────────────────────── */
 function renderMeta() {
+  // Blog post pages have their own static meta + schema in the HTML <head>.
+  // Skip JS-driven meta injection to avoid overwriting article-specific tags.
+  if (IS_BLOG_POST) return;
+
   const setMeta = (name, content, prop) => {
     let el = document.querySelector(prop ? `meta[property="${name}"]` : `meta[name="${name}"]`);
     if (!el) {
@@ -42,34 +48,40 @@ function renderMeta() {
       ogDesc:  HC.meta.ogDescription,
     },
     services: {
-      title: 'Services — GST, UAE VAT, E-Commerce & Export Consulting | Henry Corporation',
-      desc:  'Complete compliance and growth services for Indian businesses — GST, UAE VAT, LLC formation, Amazon/Flipkart/Meesho seller management, and global export consulting.',
-      ogTitle: 'Services — Henry Corporation',
-      ogDesc:  'GST, UAE VAT, E-Commerce & Export Consulting Services',
+      title: 'Export Consulting & International Trade Services India | Henry Corporation',
+      desc:  'Complete export and international trade services — IEC registration, export documentation, international buyer sourcing, UAE expansion, Europe market entry, and Amazon Global seller setup.',
+      ogTitle: 'Export & International Trade Services — Henry Corporation',
+      ogDesc:  'Export consulting, buyer sourcing, market entry strategy, and global expansion services.',
     },
     platforms: {
       title: 'Global Marketplaces — Amazon, UAE, Europe & Alibaba | Henry Corporation',
-      desc:  'Sell on Amazon International, Noon UAE, Bol.com, Allegro and more. Henry Corporation manages global marketplace expansion for Indian brands.',
+      desc:  'Sell on Amazon International, Noon UAE, Bol.com, Allegro, and Alibaba.com. Henry Corporation manages global marketplace expansion for Indian manufacturers and exporters.',
       ogTitle: 'Global Marketplaces — Henry Corporation',
-      ogDesc:  'Amazon, UAE, Europe & Global Marketplace Expansion',
+      ogDesc:  'Amazon, UAE, Europe & Global Marketplace Expansion for Indian businesses.',
     },
     'why-us': {
-      title: 'Why Choose Henry Corporation — Your Global Expansion Partner',
-      desc:  '500+ businesses served. 5+ years of expertise. Dedicated account managers. See why Indian businesses choose Henry Corporation.',
-      ogTitle: 'Why Choose Henry Corporation',
-      ogDesc:  '500+ businesses served. Your global expansion partner.',
+      title: 'Why Choose Henry Corporation — India\'s Trusted Export Consulting Partner',
+      desc:  '500+ businesses served. 5+ years of cross-border expertise. 20+ markets reached. See why Indian manufacturers, exporters, and D2C brands trust Henry Corporation for international expansion.',
+      ogTitle: 'Why Choose Henry Corporation — 500+ Businesses Served',
+      ogDesc:  '500+ businesses served. Your trusted export consulting and global expansion partner.',
     },
     pricing: {
-      title: 'Pricing Plans — GST, E-Commerce & UAE Services | Henry Corporation',
-      desc:  'Simple, transparent pricing for GST filing, e-commerce seller management, and UAE services. Starter from ₹2,999/month. No hidden fees.',
+      title: 'Pricing Plans — Export Consulting & Global Expansion Services | Henry Corporation',
+      desc:  'Simple, transparent pricing for export consulting, GST/IEC registration, UAE VAT, and international marketplace management. Starter plans from ₹2,999/month.',
       ogTitle: 'Pricing — Henry Corporation | Starting ₹2,999/month',
-      ogDesc:  'Transparent pricing for GST, UAE VAT, and e-commerce management.',
+      ogDesc:  'Transparent pricing for export consulting, GST/IEC, and international expansion services.',
     },
     contact: {
-      title: 'Contact Us — Book a Free Consultation | Henry Corporation',
-      desc:  'Book a free 30-minute consultation with Henry Corporation. Expert help with GST, UAE VAT, Amazon seller management, and global business expansion.',
-      ogTitle: 'Contact Henry Corporation — Free Consultation',
-      ogDesc:  'Book a free consultation. Expert GST, UAE VAT, and export consulting.',
+      title: 'Contact Us — Book a Free Export Consultation | Henry Corporation',
+      desc:  'Book a free 30-minute consultation with Henry Corporation. Expert help with export consulting, international buyer sourcing, UAE expansion, and global business growth.',
+      ogTitle: 'Contact Henry Corporation — Free Export Consultation',
+      ogDesc:  'Book a free 30-minute consultation. Expert export and international trade consulting.',
+    },
+    blog: {
+      title: 'Export & International Trade Blog | Henry Corporation',
+      desc:  'Expert guides on exporting from India, UAE business setup, IEC registration, Amazon UAE selling, EU market entry, and international trade consulting.',
+      ogTitle: 'Export & International Trade Blog — Henry Corporation',
+      ogDesc:  'Expert guides for Indian exporters and businesses going global.',
     },
   };
 
@@ -91,6 +103,54 @@ function renderMeta() {
     '@context': 'https://schema.org',
     '@graph': [
       {
+        '@type':   'Organization',
+        '@id':     'https://henry-corporation.com/#organization',
+        name:       HC.company.name,
+        legalName:  HC.company.name,
+        url:        'https://henry-corporation.com',
+        logo: {
+          '@type':  'ImageObject',
+          url:      'https://henry-corporation.com/assets/logo.png',
+          width:    '512',
+          height:   '512',
+        },
+        image:      'https://henry-corporation.com/assets/logo.png',
+        description: HC.meta.description,
+        telephone:  HC.company.phone,
+        email:      HC.company.email,
+        foundingDate: '2020',
+        areaServed: [
+          { '@type': 'Country', name: 'India' },
+          { '@type': 'Country', name: 'United Arab Emirates' },
+          { '@type': 'Country', name: 'United Kingdom' },
+          { '@type': 'Country', name: 'Germany' },
+          { '@type': 'Country', name: 'France' },
+          { '@type': 'Country', name: 'Netherlands' },
+          { '@type': 'Country', name: 'United States' },
+        ],
+        knowsAbout: [
+          'Export Consulting',
+          'International Buyer Sourcing',
+          'UAE Business Setup',
+          'Europe Market Entry',
+          'Amazon Global Selling',
+          'IEC Code Registration',
+          'GST Compliance',
+          'UAE VAT Registration',
+          'Export Documentation',
+          'International Trade Advisory',
+        ],
+        sameAs: Object.values(HC.company.social || {}),
+        contactPoint: {
+          '@type':       'ContactPoint',
+          telephone:     HC.company.phone,
+          email:         HC.company.email,
+          contactType:   'Customer Service',
+          areaServed:    ['IN', 'AE', 'GB', 'DE', 'FR', 'NL', 'US'],
+          availableLanguage: ['English', 'Hindi'],
+        },
+      },
+      {
         '@type':   ['LocalBusiness', 'ProfessionalService'],
         '@id':     'https://henry-corporation.com/#business',
         name:       HC.company.name,
@@ -98,6 +158,7 @@ function renderMeta() {
         url:        'https://henry-corporation.com',
         telephone:  HC.company.phone,
         email:      HC.company.email,
+        priceRange: '₹₹',
         address: {
           '@type':         'PostalAddress',
           addressCountry:  'IN',
@@ -111,7 +172,15 @@ function renderMeta() {
         sameAs: Object.values(HC.company.social || {}),
         hasOfferCatalog: {
           '@type': 'OfferCatalog',
-          name:    'Global E-Commerce & Compliance Services',
+          name:    'Export & International Trade Consulting Services',
+          itemListElement: [
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Export Consulting' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'International Buyer Sourcing' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'UAE Business Setup' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Europe Market Entry' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Amazon Global Selling' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Export Documentation' } },
+          ],
         },
       },
       {
@@ -120,9 +189,47 @@ function renderMeta() {
         url:     'https://henry-corporation.com',
         name:    HC.company.name,
         description: HC.company.tagline,
+        publisher: { '@id': 'https://henry-corporation.com/#organization' },
+        inLanguage: 'en-IN',
+        potentialAction: {
+          '@type': 'SearchAction',
+          target:  'https://henry-corporation.com/?q={search_term_string}',
+          'query-input': 'required name=search_term_string',
+        },
       },
     ],
   };
+
+  // BreadcrumbList for inner pages (non-home)
+  if (PAGE !== 'home') {
+    const pageNames = {
+      services: 'Services', platforms: 'Platforms', 'why-us': 'Why Us',
+      pricing: 'Pricing', contact: 'Contact', blog: 'Blog',
+      privacy: 'Privacy Policy', terms: 'Terms & Conditions',
+    };
+    const pageName = pageNames[PAGE] || PAGE;
+    const pageUrl  = `https://henry-corporation.com/${PAGE}.html`;
+    baseSchema['@graph'].push({
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://henry-corporation.com/' },
+        { '@type': 'ListItem', position: 2, name: pageName, item: pageUrl },
+      ],
+    });
+  }
+
+  // Blog hub — emit ItemList of blog posts
+  if (PAGE === 'blog' && HC.blogPosts && HC.blogPosts.length) {
+    baseSchema['@graph'].push({
+      '@type': 'ItemList',
+      itemListElement: HC.blogPosts.map((p, i) => ({
+        '@type':   'ListItem',
+        position:  i + 1,
+        url:       `https://henry-corporation.com/blog/${p.slug}.html`,
+        name:      p.title,
+      })),
+    });
+  }
 
   if (PAGE === 'pricing' && HC.faqs && HC.faqs.length) {
     baseSchema['@graph'].push({
@@ -151,16 +258,18 @@ function renderMeta() {
 
 /* ── Nav ────────────────────────────────────────────────── */
 function renderNav() {
-  document.getElementById('nav-root').innerHTML = `
-    <a href="index.html" class="nav-logo" aria-label="${HC.company.name} home">
-      <img src="assets/logo.png" alt="${HC.company.name}" class="nav-logo-img" />
+  const navRoot = document.getElementById('nav-root');
+  if (!navRoot) return;
+  navRoot.innerHTML = `
+    <a href="${PATH_PREFIX}index.html" class="nav-logo" aria-label="${HC.company.name} home">
+      <img src="${PATH_PREFIX}assets/logo.png" alt="${HC.company.name} — Export Consulting & Global Business Expansion" class="nav-logo-img" />
     </a>
     <ul class="nav-links" role="list">
       ${HC.nav.map(n => {
         const isActive = window.location.pathname.endsWith(n.href) ||
                          (PAGE !== 'home' && n.href === PAGE + '.html') ||
                          (PAGE === n.href.replace('.html',''));
-        return `<li><a href="${n.href}" class="${isActive ? 'active' : ''}">${n.label}</a></li>`;
+        return `<li><a href="${PATH_PREFIX}${n.href}" class="${isActive ? 'active' : ''}">${n.label}</a></li>`;
       }).join('')}
     </ul>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
@@ -170,8 +279,10 @@ function renderNav() {
 }
 
 function renderMobileNav() {
-  document.getElementById('mobile-nav').innerHTML = `
-    ${HC.nav.map(n => `<a href="${n.href}">${n.label}</a>`).join('')}
+  const mobileNav = document.getElementById('mobile-nav');
+  if (!mobileNav) return;
+  mobileNav.innerHTML = `
+    ${HC.nav.map(n => `<a href="${PATH_PREFIX}${n.href}">${n.label}</a>`).join('')}
     <div class="mobile-nav-contact">
       <a href="${HC.company.phoneTel}">${HC.company.phone}</a>
       <a href="mailto:${HC.company.email}">${HC.company.email}</a>
@@ -977,7 +1088,7 @@ function renderFooter() {
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <img src="assets/logo.png" alt="${HC.company.name} logo" class="footer-logo-img" loading="lazy" width="200" height="120" />
+          <img src="${PATH_PREFIX}assets/logo.png" alt="${HC.company.name} logo" class="footer-logo-img" loading="lazy" width="200" height="120" />
           <p class="footer-tagline">${HC.company.footerDesc.slice(0, 160)}…</p>
           <div class="footer-contact-block">
             <a href="${HC.company.phoneTel}" class="footer-contact-item">${I.phone} ${HC.company.phone}</a>
@@ -989,25 +1100,25 @@ function renderFooter() {
         <div>
           <div class="footer-col-title">🇮🇳 India Services</div>
           <ul class="footer-links">
-            ${HC.footerLinks.india.map(l => `<li><a href="${l.href}">${l.label}</a></li>`).join('')}
+            ${HC.footerLinks.india.map(l => `<li><a href="${PATH_PREFIX}${l.href}">${l.label}</a></li>`).join('')}
           </ul>
         </div>
         <div>
           <div class="footer-col-title">🇦🇪 UAE Services</div>
           <ul class="footer-links">
-            ${HC.footerLinks.uae.map(l => `<li><a href="${l.href}">${l.label}</a></li>`).join('')}
+            ${HC.footerLinks.uae.map(l => `<li><a href="${PATH_PREFIX}${l.href}">${l.label}</a></li>`).join('')}
           </ul>
         </div>
         <div>
           <div class="footer-col-title">🛒 E-Commerce</div>
           <ul class="footer-links">
-            ${HC.footerLinks.ecommerce.map(l => `<li><a href="${l.href}">${l.label}</a></li>`).join('')}
+            ${HC.footerLinks.ecommerce.map(l => `<li><a href="${PATH_PREFIX}${l.href}">${l.label}</a></li>`).join('')}
           </ul>
         </div>
         <div>
           <div class="footer-col-title">Company</div>
           <ul class="footer-links">
-            ${HC.footerLinks.company.map(l => `<li><a href="${l.href}">${l.label}</a></li>`).join('')}
+            ${HC.footerLinks.company.map(l => `<li><a href="${PATH_PREFIX}${l.href}">${l.label}</a></li>`).join('')}
           </ul>
         </div>
       </div>
@@ -1061,11 +1172,87 @@ function renderCertifications() {
 
 /* ── Floats ─────────────────────────────────────────────── */
 function renderFloats() {
-  document.getElementById('floats-root').innerHTML = `
+  const root = document.getElementById('floats-root');
+  if (!root) return;
+  root.innerHTML = `
     <a class="float-wa" href="${waHref(HC.hero.waMsg)}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
       ${I.wa}
     </a>
-    <a class="mobile-sticky-cta" href="${HC.hero.ctaHref}">${HC.hero.ctaText} ${I.arrow}</a>
+    <a class="mobile-sticky-cta" href="${PATH_PREFIX}${HC.hero.ctaHref}">${HC.hero.ctaText} ${I.arrow}</a>
+  `;
+}
+
+/* ── Blog Teaser (homepage) ─────────────────────────────── */
+function renderBlogTeaser() {
+  if (!HC.blogPosts || !HC.blogPosts.length) return '';
+  const featured = HC.blogPosts.filter(p => p.featured).slice(0, 3);
+  if (!featured.length) return '';
+  return `
+    <section class="blog-teaser section" id="from-the-blog">
+      <div class="container">
+        <div class="blog-teaser-hdr">
+          <div>
+            <div class="section-label">From the Blog</div>
+            <h2 class="section-title reveal-left">Export Insights &<br>International Trade Guides</h2>
+          </div>
+          <a href="${PATH_PREFIX}blog.html" class="link-text reveal-right" style="color:var(--coral)">View All Posts ${I.arrow}</a>
+        </div>
+        <div class="blog-teaser-grid">
+          ${featured.map((p, i) => `
+            <a href="${PATH_PREFIX}blog/${p.slug}.html" class="blog-teaser-card reveal reveal-d${i + 1}">
+              <div class="blog-teaser-card-icon">${p.icon}</div>
+              <div class="blog-teaser-card-tag">${p.category}</div>
+              <h3 class="blog-teaser-card-title">${p.title}</h3>
+              <p class="blog-teaser-card-excerpt">${p.excerpt.slice(0, 130)}…</p>
+              <div class="blog-teaser-card-meta">
+                <span>${p.readTime}</span>
+                <span class="blog-teaser-card-link">Read More ${I.arrow}</span>
+              </div>
+            </a>`).join('')}
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+/* ── Blog Hub Page ──────────────────────────────────────── */
+function renderBlogPage() {
+  const posts = HC.blogPosts || [];
+  document.getElementById('main-root').innerHTML = `
+    <section class="blog-hub-hero">
+      <div class="container">
+        <div class="blog-hub-hero-inner">
+          <div class="section-label light" style="justify-content:center">Henry Corporation Blog</div>
+          <h1 class="blog-hub-title">Export & International<br>Trade Insights</h1>
+          <p class="blog-hub-sub">Expert guides on exporting from India, UAE business setup, IEC registration, Amazon UAE selling, EU market entry, and international trade consulting — written by the Henry Corporation team.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-hub-section section">
+      <div class="container">
+        <div class="blog-hub-grid">
+          ${posts.map((p, i) => `
+            <a href="blog/${p.slug}.html" class="blog-hub-card reveal reveal-d${(i % 3) + 1}">
+              <div class="blog-hub-card-top">
+                <span class="blog-hub-card-icon">${p.icon}</span>
+                ${p.featured ? '<span class="blog-hub-card-featured">★ Featured</span>' : ''}
+              </div>
+              <div class="blog-hub-card-tag">${p.category}</div>
+              <h2 class="blog-hub-card-title">${p.title}</h2>
+              <p class="blog-hub-card-excerpt">${p.excerpt}</p>
+              <div class="blog-hub-card-meta">
+                <span>${p.date}</span>
+                <span class="blog-hub-meta-dot"></span>
+                <span>${p.readTime}</span>
+              </div>
+              <span class="blog-hub-card-link">Read Full Article ${I.arrow}</span>
+            </a>`).join('')}
+        </div>
+      </div>
+    </section>
+
+    ${renderCTA()}
   `;
 }
 
@@ -1081,6 +1268,7 @@ function renderHomePage() {
     renderHomeGlobalExpansion(),
     renderWhyUs(),
     renderProcess(),
+    renderBlogTeaser(),
     renderCertifications(),
     renderTestimonials(),
     renderHomeFAQ(),
@@ -1954,8 +2142,12 @@ function init() {
     'why-us':  renderWhyUsPage,
     pricing:   renderPricingPage,
     contact:   renderContactPage,
+    blog:      renderBlogPage,
   };
-  (pageMap[PAGE] || renderHomePage)();
+  // Blog post pages render their own static article — don't overwrite <main>
+  if (PAGE !== 'blog-post') {
+    (pageMap[PAGE] || renderHomePage)();
+  }
 
   renderFooter();
   renderFloats();

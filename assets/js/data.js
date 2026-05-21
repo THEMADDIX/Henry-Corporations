@@ -37,11 +37,11 @@ const HC = {
 
   // ── SEO / Meta ───────────────────────────────────────────────────
   meta: {
-    title:         'Henry Corporation | Export Consulting & Global Business Expansion Services',
-    description:   'Helping businesses expand internationally through export consulting, global sourcing, buyer acquisition, market entry strategies, and international trade support. Serving India, UAE and global markets.',
-    keywords:      'global e-commerce expansion India, export compliance India, sell internationally from India, Amazon international seller India, UAE marketplace expansion, European marketplace India, Alibaba seller India, D2C global expansion, MSME export India, GST filing India, UAE VAT filing, Amazon seller accountant, ecommerce tax consultant, LLC formation UAE, ITR filing ecommerce, GSTR-1 GSTR-3B, UAE corporate tax, company registration India, cross border ecommerce accounting, GST registration India, UAE VAT registration',
-    ogTitle:       'Henry Corporation — Sell Internationally. Grow Globally.',
-    ogDescription: 'India\'s premier global e-commerce expansion agency — helping Indian brands expand to UAE, Europe, Amazon International, Alibaba and global marketplaces with full compliance support.',
+    title:         'Henry Corporation | Export Consulting & Global Business Expansion Services India',
+    description:   'Helping Indian manufacturers, suppliers, exporters and D2C brands expand internationally through export consulting, global sourcing, international buyer acquisition, market entry strategy, UAE expansion, and trade documentation support.',
+    keywords:      'export consulting India, international trade consulting, how to start exporting from India, international buyer sourcing, global supplier sourcing India, UAE business setup, Europe market entry India, IEC code registration, export documentation services, Amazon UAE seller India, market entry strategy, MSME exports India, DGFT consultant, FEMA compliance export, international trade advisory, Alibaba seller setup, Shopify global expansion, cross-border ecommerce, EU VAT OSS registration, RCMC certification, AD code registration',
+    ogTitle:       'Henry Corporation — Export Smarter. Expand Globally.',
+    ogDescription: 'India\'s premier international trade & export consulting agency — helping Indian businesses expand to UAE, Europe, Amazon International, and global markets with hands-on implementation support.',
   },
 
   // ── Navigation ───────────────────────────────────────────────────
@@ -50,6 +50,7 @@ const HC = {
     { label: 'Platforms',  href: 'platforms.html' },
     { label: 'Why Us',     href: 'why-us.html'    },
     { label: 'Pricing',    href: 'pricing.html'   },
+    { label: 'Blog',       href: 'blog.html'      },
     { label: 'Contact',    href: 'contact.html'   },
   ],
 
@@ -1258,6 +1259,60 @@ const HC = {
     {
       q: 'What industries and product categories do you work with?',
       a: 'We work with manufacturers and exporters across all major categories including textiles and apparel, food and spices, handicrafts and home décor, electronics, beauty and wellness, industrial goods, and FMCG. We have specific experience in UAE, UK, and European market requirements for each category.',
+    },
+  ],
+
+  // ── Blog Posts (SEO content marketing) ───────────────────────────
+  blogPosts: [
+    {
+      slug:     'how-to-start-exporting-from-india',
+      title:    'How to Start Exporting from India: Complete 2026 Guide for MSMEs',
+      excerpt:  'A step-by-step guide for Indian businesses to start exporting in 2026 — IEC registration, GST compliance, market selection, documentation, and finding international buyers.',
+      category: 'Export Consulting',
+      date:     'May 21, 2026',
+      readTime: '12 min read',
+      icon:     '🌍',
+      featured: true,
+    },
+    {
+      slug:     'uae-business-setup-for-indian-companies',
+      title:    'UAE Business Setup for Indians: Free Zone vs Mainland 2026 Guide',
+      excerpt:  'Complete UAE business setup guide for Indian companies — Free Zone vs Mainland comparison, costs, documents, visa, and step-by-step process to register your UAE company.',
+      category: 'UAE Expansion',
+      date:     'May 21, 2026',
+      readTime: '14 min read',
+      icon:     '🇦🇪',
+      featured: true,
+    },
+    {
+      slug:     'iec-code-registration-guide',
+      title:    'IEC Code Registration 2026: Complete DGFT Process & Documents',
+      excerpt:  'Step-by-step guide to IEC (Import Export Code) registration on DGFT portal — eligibility, documents, fees, timeline, and how to apply online in 2026.',
+      category: 'Compliance',
+      date:     'May 21, 2026',
+      readTime: '8 min read',
+      icon:     '📋',
+      featured: false,
+    },
+    {
+      slug:     'top-products-to-export-from-india-2026',
+      title:    'Top 10 Products to Export from India in 2026 (High-Demand Markets)',
+      excerpt:  'Top 10 profitable products to export from India in 2026 — with demand data, target markets, margins, and getting-started guidance for new Indian exporters.',
+      category: 'Market Research',
+      date:     'May 21, 2026',
+      readTime: '15 min read',
+      icon:     '📦',
+      featured: true,
+    },
+    {
+      slug:     'sell-on-amazon-uae-from-india',
+      title:    'How to Sell on Amazon UAE from India: 2026 Complete Setup Guide',
+      excerpt:  'Complete guide to selling on Amazon.ae from India — account setup, UAE VAT registration, FBA, listing optimization, customs, and shipping from India to UAE.',
+      category: 'Marketplace Expansion',
+      date:     'May 21, 2026',
+      readTime: '13 min read',
+      icon:     '🛒',
+      featured: false,
     },
   ],
 };
