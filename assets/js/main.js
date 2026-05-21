@@ -134,6 +134,16 @@ function renderMeta() {
       })),
     });
   }
+  if (PAGE === 'home' && HC.homeFaqs && HC.homeFaqs.length) {
+    baseSchema['@graph'].push({
+      '@type': 'FAQPage',
+      mainEntity: HC.homeFaqs.map(f => ({
+        '@type':          'Question',
+        name:             f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    });
+  }
 
   const schemaEl = document.getElementById('schema-ld');
   if (schemaEl) schemaEl.textContent = JSON.stringify(baseSchema);
@@ -264,6 +274,7 @@ function renderStats() {
 
 /* ── Platform Logos ─────────────────────────────────────── */
 function renderPlatformLogos() {
+  const bizTypes = HC.homeTrustBar || [];
   const platforms = [
     { name: 'Amazon',   color: '#FF9900' },
     { name: 'Flipkart', color: '#2874F0' },
@@ -273,9 +284,21 @@ function renderPlatformLogos() {
     { name: 'Noon',     color: '#FEEE00', textColor: '#000' },
   ];
   return `
+    <div class="biz-trust-bar">
+      <div class="container">
+        <p class="biz-trust-label">Trusted By Growing Businesses Looking To Expand Internationally</p>
+        <div class="biz-trust-row">
+          ${bizTypes.map(b => `
+            <div class="biz-trust-item">
+              <span class="biz-trust-icon">${b.icon}</span>
+              <span class="biz-trust-name">${b.label}</span>
+            </div>`).join('')}
+        </div>
+      </div>
+    </div>
     <div class="platform-logos-section">
       <div class="container">
-        <p class="platform-logos-label">Trusted by sellers across</p>
+        <p class="platform-logos-label">We manage seller accounts on</p>
         <div class="platform-logos-row">
           ${platforms.map(p => `
             <div class="platform-logo-item">
@@ -285,6 +308,107 @@ function renderPlatformLogos() {
         </div>
       </div>
     </div>
+  `;
+}
+
+/* ── Home About Section ─────────────────────────────────────── */
+function renderHomeAbout() {
+  const a = HC.homeAbout;
+  if (!a) return '';
+  return `
+    <section class="home-about section" id="about">
+      <div class="container">
+        <div class="home-about-inner">
+          <div class="home-about-left reveal-left">
+            <div class="section-label">${a.label}</div>
+            <h2 class="section-title">${a.title}</h2>
+            ${a.paras.map(p => `<p class="home-about-para">${p}</p>`).join('')}
+            <a href="${a.ctaHref}" class="btn-solid-coral">${a.ctaText} ${I.arrow}</a>
+          </div>
+          <div class="home-about-right reveal-right">
+            <div class="home-about-highlights">
+              ${a.highlights.map((h, i) => `
+                <div class="home-about-highlight reveal reveal-d${i + 1}">
+                  <span class="ha-icon">${h.icon}</span>
+                  <span class="ha-text">${h.text}</span>
+                </div>`).join('')}
+            </div>
+            <div class="home-about-cta-strip">
+              <a href="contact.html" class="btn-outline-coral">Book Free Consultation ${I.arrow}</a>
+              <a href="${waHref('Hi Henry Corporation, I want to learn about international trade consulting')}" class="btn-ghost" target="_blank" rel="noopener">${I.wa} WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+/* ── Home Services (6 Export/Trade Cards) ──────────────────── */
+function renderHomeServices() {
+  const svcs = HC.homeServices;
+  if (!svcs || !svcs.length) return '';
+  return `
+    <section class="home-svc-section section-dark section" id="home-services">
+      <div class="container">
+        <div class="home-svc-hdr reveal">
+          <div class="section-label light">What We Do</div>
+          <h2 class="section-title" style="color:var(--white)">Our Core Services</h2>
+          <p class="section-sub" style="color:rgba(255,255,255,0.52);max-width:580px">From export consulting and buyer sourcing to market entry strategy and international trade advisory — we cover every step of your global expansion.</p>
+        </div>
+        <div class="home-svc-grid">
+          ${svcs.map((s, i) => `
+            <div class="home-svc-card reveal reveal-d${(i % 3) + 1}">
+              <div class="home-svc-card-top">
+                <span class="home-svc-num">${s.num}</span>
+                <span class="home-svc-icon">${s.icon}</span>
+              </div>
+              <h3 class="home-svc-title">${s.title}</h3>
+              <p class="home-svc-desc">${s.desc}</p>
+              <div class="home-svc-benefit">${I.check} ${s.benefit}</div>
+              <a href="${s.link}" class="home-svc-lnk">Learn More ${I.arrow}</a>
+            </div>`).join('')}
+        </div>
+        <div class="home-svc-footer reveal">
+          <a href="services.html" class="btn-solid-coral">Explore All Services ${I.arrow}</a>
+          <a href="contact.html" class="btn-ghost">Book Free Consultation ${I.arrow}</a>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+/* ── Home Global Expansion (Expand Beyond India) ───────────── */
+function renderHomeGlobalExpansion() {
+  const items = [
+    { icon: '🇦🇪', title: 'UAE Expansion',              desc: 'LLC formation, FTA VAT, Amazon.ae & Noon setup. Most popular first step for Indian exporters.'       },
+    { icon: '🇪🇺', title: 'Europe Market Entry',        desc: 'Amazon EU, Bol.com, Allegro. VAT/OSS registration, CE marking, and multilingual listings.'          },
+    { icon: '🛒', title: 'Amazon Global Selling',       desc: 'FBA enrollment, Brand Registry, ASIN localisation, and cross-border tax compliance.'                  },
+    { icon: '🏪', title: 'Shopify International',       desc: 'Multi-currency global storefront with international shipping, GST/LUT compliance, and FEMA support.'  },
+    { icon: '🌍', title: 'D2C Global Brand',            desc: 'Take your brand direct-to-consumer internationally via your own storefront and social commerce.'      },
+    { icon: '🤝', title: 'Distributor Network',         desc: 'Find and connect with verified international distributors and wholesale partners in 20+ countries.'    },
+  ];
+  return `
+    <section class="home-ge-section section" id="global-expansion">
+      <div class="container">
+        <div class="home-ge-hdr reveal">
+          <div class="section-label">International Expansion</div>
+          <h2 class="section-title">Expand Beyond India</h2>
+          <p class="section-sub">We open doors to international markets — with hands-on support at every step from strategy to live sales.</p>
+        </div>
+        <div class="home-ge-grid">
+          ${items.map((item, i) => `
+            <div class="home-ge-card reveal reveal-d${(i % 3) + 1}">
+              <span class="home-ge-icon">${item.icon}</span>
+              <h3 class="home-ge-title">${item.title}</h3>
+              <p class="home-ge-desc">${item.desc}</p>
+            </div>`).join('')}
+        </div>
+        <div class="home-ge-cta reveal">
+          <a href="contact.html" class="btn-solid-coral">Discuss Expansion Strategy ${I.arrow}</a>
+        </div>
+      </div>
+    </section>
   `;
 }
 
@@ -461,11 +585,12 @@ function renderWhyUs() {
 /* ── Process ────────────────────────────────────────────── */
 function renderProcess() {
   return `
-    <section class="process-section">
+    <section class="process-section" id="how-we-work">
       <div class="container">
         <div class="process-hdr">
           <div class="section-label light">How It Works</div>
-          <h2 class="section-title reveal">From Consultation to<br>Global Expansion in Days</h2>
+          <h2 class="section-title reveal">How We Work</h2>
+          <p class="section-sub reveal reveal-d1" style="color:rgba(255,255,255,0.52)">A proven 5-step process — from free consultation to global expansion. Transparent, structured, and results-driven.</p>
         </div>
         <div class="process-grid">
           ${HC.process.map((p, i) => `
@@ -474,6 +599,9 @@ function renderProcess() {
               <h3 class="process-title">${p.title}</h3>
               <p class="process-desc">${p.desc}</p>
             </div>`).join('')}
+        </div>
+        <div class="process-cta reveal">
+          <a href="contact.html" class="btn-ghost">Start Your Journey ${I.arrow}</a>
         </div>
       </div>
     </section>
@@ -555,6 +683,36 @@ function renderCTA() {
             <a href="contact.html" class="btn-ghost">Book Free Consultation ${I.arrow}</a>
             <a href="${waHref(HC.hero.waMsg)}" class="btn-ghost" target="_blank" rel="noopener">${I.wa} WhatsApp</a>
           </div>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+/* ── Home FAQ ────────────────────────────────────────────────── */
+function renderHomeFAQ() {
+  if (!HC.homeFaqs || !HC.homeFaqs.length) return '';
+  return `
+    <section class="faq-section section" id="home-faq">
+      <div class="container">
+        <div class="faq-hdr">
+          <div class="section-label">Common Questions</div>
+          <h2 class="section-title reveal">Frequently Asked Questions</h2>
+          <p class="section-sub reveal reveal-d1">Everything you need to know about international trade, export consulting, and expanding your business globally.</p>
+        </div>
+        <div class="faq-list">
+          ${HC.homeFaqs.map(f => `
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                ${f.q}
+                <span class="faq-icon">${I.plus}</span>
+              </button>
+              <div class="faq-a"><p>${f.a}</p></div>
+            </div>`).join('')}
+        </div>
+        <div class="faq-cta reveal">
+          <p>Have more questions? We're here to help.</p>
+          <a href="contact.html" class="btn-solid-coral">Book a Free Consultation ${I.arrow}</a>
         </div>
       </div>
     </section>
@@ -918,10 +1076,15 @@ function renderHomePage() {
     renderPlatformLogos(),
     renderMarquee(),
     renderStats(),
-    renderServicesIntro(),
+    renderHomeAbout(),
+    renderHomeServices(),
+    renderHomeGlobalExpansion(),
     renderWhyUs(),
+    renderProcess(),
     renderCertifications(),
     renderTestimonials(),
+    renderHomeFAQ(),
+    renderServicesLeadForm(),
     renderCTA(),
   ].join('');
 }
@@ -1809,7 +1972,7 @@ function init() {
   initMobileMenu();
   initStatCounters();
   if (PAGE === 'contact' || PAGE === 'home') initContactSlider();
-  if (PAGE === 'services') initServicesLeadForm();
+  if (PAGE === 'services' || PAGE === 'home') initServicesLeadForm();
   if (PAGE === 'platforms') initCountryAccordions();
 }
 
