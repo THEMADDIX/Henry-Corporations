@@ -357,15 +357,19 @@ function renderDetailPanel(d, cardId) {
 
 function renderServiceCard(s, j, categoryId) {
   const cardId = `${categoryId}-${j}`;
+  const benefits = s.detail && s.detail.includes
+    ? s.detail.includes.slice(0, 4).map(b => `<li>${I.check} ${b}</li>`).join('')
+    : '';
   return `
-    <div class="svc-card-full reveal reveal-d${j + 1}" data-id="${cardId}">
+    <div class="svc-card-full reveal reveal-d${(j % 3) + 1}" data-id="${cardId}">
       ${s.icon ? `<div class="svc-card-icon">${s.icon}</div>` : `<div class="svc-card-n">0${j + 1}</div>`}
       <h3 class="svc-card-title">${s.title}</h3>
       <p class="svc-card-desc">${s.desc}</p>
+      ${benefits ? `<ul class="svc-benefit-list">${benefits}</ul>` : ''}
       ${s.detail && s.detail.pricing ? `<div class="svc-card-price">${s.detail.pricing}</div>` : ''}
       <div class="svc-card-footer">
         <a href="${s.link}" class="svc-card-lnk">${s.linkText} ${I.arrow}</a>
-        ${s.detail ? `<button class="svc-detail-btn" aria-expanded="false" aria-controls="detail-${cardId}">Details ${I.plus}</button>` : ''}
+        ${s.detail ? `<button class="svc-detail-btn" aria-expanded="false" aria-controls="detail-${cardId}">Full Details ${I.plus}</button>` : ''}
       </div>
       ${s.detail ? renderDetailPanel(s.detail, cardId) : ''}
     </div>`;
@@ -922,12 +926,263 @@ function renderHomePage() {
   ].join('');
 }
 
+/* ── Services Page Hero (dark, trade-themed) ────────────── */
+function renderServicesHero() {
+  const h = HC.servicesHero;
+  if (!h) return renderPageHero('services');
+  return `
+    <section class="svc-page-hero" id="svc-hero-top">
+      <div class="svc-page-hero-bg" aria-hidden="true"></div>
+      <div class="container svc-page-hero-inner">
+        <div class="svc-page-hero-left">
+          <div class="hero-badge-pill">${h.badge}</div>
+          <h1 class="svc-page-hero-title reveal-left">${h.title}</h1>
+          <p class="svc-page-hero-sub reveal-left reveal-d1">${h.sub}</p>
+          <div class="hero-cta-row reveal-left reveal-d2">
+            <a href="${h.ctaHref}" class="btn-solid-coral">${h.ctaText} ${I.arrow}</a>
+            <a href="${waHref('Hi Henry Corporation, I want to discuss international expansion for my business')}" class="btn-ghost" target="_blank" rel="noopener">${I.wa} ${h.waText}</a>
+          </div>
+          <div class="hero-trust">
+            ${h.trustItems.map(t => `<span class="hero-trust-item">${t}</span>`).join('')}
+          </div>
+        </div>
+        <div class="svc-page-hero-right reveal-right reveal-d1">
+          <div class="svc-hero-stats">
+            ${h.stats.map((s, i) => `
+              <div class="svc-hero-stat reveal reveal-d${i + 1}">
+                <div class="svc-hero-stat-num" data-target="${s.value}" data-suffix="${s.suffix}">0${s.suffix}</div>
+                <div class="svc-hero-stat-lbl">${s.label}</div>
+              </div>`).join('')}
+          </div>
+        </div>
+      </div>
+      <div class="svc-page-hero-scroll" id="hero-scroll" aria-label="Scroll to services">${I.arrowDown}</div>
+    </section>
+  `;
+}
+
+/* ── Global Expansion Services Section ──────────────────── */
+function renderGlobalExpansion() {
+  if (!HC.globalExpansionServices) return '';
+  return `
+    <section class="ge-section section-dark section" id="global-expansion">
+      <div class="container">
+        <div class="ge-hdr reveal">
+          <div class="section-label light">Premium Global Services</div>
+          <h2 class="section-title" style="color:var(--white)">Global Expansion Services</h2>
+          <p class="section-sub" style="color:rgba(255,255,255,0.52);max-width:600px">
+            End-to-end support for brands entering UAE, Europe, and international markets — from company formation to live marketplace sales.
+          </p>
+        </div>
+        <div class="ge-grid">
+          ${HC.globalExpansionServices.map((s, i) => `
+            <div class="ge-card reveal reveal-d${(i % 3) + 1}">
+              <div class="ge-card-top">
+                <span class="ge-tag">${s.tag}</span>
+                <span class="ge-icon">${s.icon}</span>
+              </div>
+              <h3 class="ge-title">${s.title}</h3>
+              <p class="ge-overview">${s.overview}</p>
+              <ul class="ge-benefits">
+                ${s.benefits.map(b => `<li>${I.check} ${b}</li>`).join('')}
+              </ul>
+              <div class="ge-outcome">
+                <span class="ge-outcome-label">Outcome</span>
+                <span class="ge-outcome-text">${s.outcome}</span>
+              </div>
+              <a href="contact.html" class="ge-cta">${s.cta} ${I.arrow}</a>
+            </div>`).join('')}
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+/* ── Services Why Choose Us ──────────────────────────────── */
+function renderServicesWhyUs() {
+  if (!HC.servicesWhyUs) return '';
+  return `
+    <section class="svcu-section section">
+      <div class="container">
+        <div class="svcu-hdr">
+          <div class="section-label">Why Choose Us</div>
+          <h2 class="section-title reveal">Why Businesses Choose<br>Henry Corporation</h2>
+          <p class="section-sub reveal reveal-d1">We're not a typical compliance firm. We're a hands-on international expansion partner — with market knowledge, a global network, and a track record that speaks for itself.</p>
+        </div>
+        <div class="svcu-grid">
+          ${HC.servicesWhyUs.map((w, i) => `
+            <div class="svcu-card reveal reveal-d${(i % 3) + 1}">
+              <div class="svcu-icon">${w.icon}</div>
+              <h3 class="svcu-title">${w.title}</h3>
+              <p class="svcu-desc">${w.desc}</p>
+            </div>`).join('')}
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+/* ── Services Stats Bar ──────────────────────────────────── */
+function renderServicesStats() {
+  const stats = HC.servicesHero ? HC.servicesHero.stats : HC.stats;
+  return `
+    <div class="svs-stats-bar">
+      <div class="container">
+        <div class="svs-stats-grid">
+          ${stats.map((s, i) => `
+            <div class="svs-stat reveal reveal-d${i + 1}">
+              <div class="svs-stat-num" data-target="${s.value}" data-suffix="${s.suffix}">0${s.suffix}</div>
+              <div class="svs-stat-lbl">${s.label}</div>
+            </div>`).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+/* ── How We Work (5-Step Timeline) ──────────────────────── */
+function renderHowWeWork() {
+  if (!HC.howWeWork) return '';
+  return `
+    <section class="hww-section section-dark section" id="how-we-work">
+      <div class="container">
+        <div class="hww-hdr">
+          <div class="section-label light">Our Process</div>
+          <h2 class="section-title reveal" style="color:var(--white)">How We Work</h2>
+          <p class="section-sub reveal reveal-d1" style="color:rgba(255,255,255,0.52)">A proven 5-step process — from free consultation to global expansion. Transparent, structured, and results-driven.</p>
+        </div>
+        <div class="hww-steps">
+          ${HC.howWeWork.map((p, i) => `
+            <div class="hww-step reveal reveal-d${i + 1}">
+              <div class="hww-step-head">
+                <span class="hww-num">${p.step}</span>
+                ${i < HC.howWeWork.length - 1 ? '<span class="hww-connector" aria-hidden="true"></span>' : ''}
+              </div>
+              <div class="hww-step-icon">${p.icon}</div>
+              <h3 class="hww-step-title">${p.title}</h3>
+              <p class="hww-step-desc">${p.desc}</p>
+            </div>`).join('')}
+        </div>
+        <div class="hww-cta reveal">
+          <a href="contact.html" class="btn-solid-coral">Start Your Journey ${I.arrow}</a>
+          <a href="${waHref('Hi Henry Corporation, I want to start my international expansion')}" class="btn-ghost" target="_blank" rel="noopener">${I.wa} WhatsApp Us</a>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+/* ── Services Lead Capture Form ──────────────────────────── */
+function renderServicesLeadForm() {
+  return `
+    <section class="slf-section" id="get-roadmap">
+      <div class="container">
+        <div class="slf-inner">
+          <div class="slf-left reveal-left">
+            <div class="section-label light">Get Started Today</div>
+            <h2 class="slf-title">Ready To Expand Your<br>Business Globally?</h2>
+            <p class="slf-sub">Tell us about your business and we'll build a personalised international expansion roadmap — completely free.</p>
+            <ul class="slf-benefits">
+              <li>${I.check} Free 30-minute consultation</li>
+              <li>${I.check} Custom expansion roadmap</li>
+              <li>${I.check} No obligation, no pressure</li>
+              <li>${I.check} Response within 2 business hours</li>
+            </ul>
+          </div>
+          <div class="slf-right reveal-right">
+            <form class="slf-form" id="slf-form" novalidate>
+              <div class="slf-form-row">
+                <div class="slf-group">
+                  <label class="slf-label" for="slf-name">Full Name <span class="cs-required">*</span></label>
+                  <input class="slf-input" type="text" id="slf-name" placeholder="Rajesh Kumar" required />
+                </div>
+                <div class="slf-group">
+                  <label class="slf-label" for="slf-company">Company</label>
+                  <input class="slf-input" type="text" id="slf-company" placeholder="ABC Exports Pvt Ltd" />
+                </div>
+              </div>
+              <div class="slf-form-row">
+                <div class="slf-group">
+                  <label class="slf-label" for="slf-product">Product / Category <span class="cs-required">*</span></label>
+                  <input class="slf-input" type="text" id="slf-product" placeholder="e.g. Handicrafts, Spices, Fashion" required />
+                </div>
+                <div class="slf-group">
+                  <label class="slf-label" for="slf-country">Target Country</label>
+                  <select class="slf-input slf-select" id="slf-country">
+                    <option value="">Select target market…</option>
+                    ${HC.contactForm.targetCountries.map(c => `<option value="${c}">${c}</option>`).join('')}
+                  </select>
+                </div>
+              </div>
+              <div class="slf-form-row">
+                <div class="slf-group">
+                  <label class="slf-label" for="slf-email">Email Address</label>
+                  <input class="slf-input" type="email" id="slf-email" placeholder="you@company.com" />
+                </div>
+                <div class="slf-group">
+                  <label class="slf-label" for="slf-phone">Phone / WhatsApp <span class="cs-required">*</span></label>
+                  <input class="slf-input" type="tel" id="slf-phone" placeholder="+91 98765 43210" required />
+                </div>
+              </div>
+              <div class="slf-group">
+                <label class="slf-label" for="slf-msg">Message / Requirement</label>
+                <textarea class="slf-input slf-textarea" id="slf-msg" placeholder="Tell us about your products, current export status, and what you want to achieve internationally…" rows="3"></textarea>
+              </div>
+              <button type="submit" class="slf-submit">Get My Expansion Roadmap ${I.arrow}</button>
+              <p class="slf-privacy">Your information is 100% confidential. We never share data with third parties.</p>
+            </form>
+            <div class="slf-success" id="slf-success" hidden>
+              <div class="cs-success-icon">✓</div>
+              <h3 class="cs-success-title">Request Received!</h3>
+              <p class="cs-success-sub">Thank you! We'll reach out within 2 business hours to discuss your expansion goals. Check WhatsApp for a quick confirmation.</p>
+              <a href="${waHref('Hi Henry Corporation! I just submitted an expansion roadmap request. Looking forward to speaking with you.')}" class="btn-solid-coral" target="_blank" rel="noopener" style="margin-top:20px;display:inline-flex">${I.wa} Confirm on WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+/* ── Services-Specific FAQ ───────────────────────────────── */
+function renderServicesFAQ() {
+  if (!HC.servicesFaqs) return '';
+  return `
+    <section class="faq-section section" id="services-faq">
+      <div class="container">
+        <div class="faq-hdr">
+          <div class="section-label">Have Questions?</div>
+          <h2 class="section-title reveal">Frequently Asked Questions</h2>
+          <p class="section-sub reveal reveal-d1">Everything you need to know about our international trade and export consulting services.</p>
+        </div>
+        <div class="faq-list">
+          ${HC.servicesFaqs.map(f => `
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                ${f.q}
+                <span class="faq-icon">${I.plus}</span>
+              </button>
+              <div class="faq-a"><p>${f.a}</p></div>
+            </div>`).join('')}
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+/* ── Services Page Composer ──────────────────────────────── */
 function renderServicesPage() {
   document.getElementById('main-root').innerHTML = [
-    renderPageHero('services'),
+    renderServicesHero(),
+    renderMarquee(),
+    renderServicesStats(),
     renderServices(),
-    renderProblems(),
-    renderProcess(),
+    renderGlobalExpansion(),
+    renderServicesWhyUs(),
+    renderHowWeWork(),
+    renderTestimonials(),
+    renderServicesLeadForm(),
+    renderServicesFAQ(),
     renderCTA(),
   ].join('');
 }
@@ -1317,7 +1572,7 @@ function initMobileMenu() {
 }
 
 function initStatCounters() {
-  const items = document.querySelectorAll('.stat-num[data-target]');
+  const items = document.querySelectorAll('.stat-num[data-target], .svc-hero-stat-num[data-target], .svs-stat-num[data-target]');
   if (!items.length) return;
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -1427,6 +1682,56 @@ function initContactSlider() {
   backBtn.addEventListener('click', () => { if (step > 0) goTo(step - 1); });
 }
 
+function initServicesLeadForm() {
+  const form = document.getElementById('slf-form');
+  const success = document.getElementById('slf-success');
+  if (!form) return;
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const nameEl  = document.getElementById('slf-name');
+    const phoneEl = document.getElementById('slf-phone');
+    const prodEl  = document.getElementById('slf-product');
+    let valid = true;
+    [nameEl, phoneEl, prodEl].forEach(el => {
+      if (el && el.required && !el.value.trim()) {
+        el.style.borderColor = 'var(--coral)';
+        if (valid) el.focus();
+        valid = false;
+      } else if (el) {
+        el.style.borderColor = '';
+      }
+    });
+    if (!valid) return;
+
+    const name    = nameEl?.value.trim() || '';
+    const company = document.getElementById('slf-company')?.value.trim() || '';
+    const product = prodEl?.value.trim() || '';
+    const country = document.getElementById('slf-country')?.value || '';
+    const email   = document.getElementById('slf-email')?.value.trim() || '';
+    const phone   = phoneEl?.value.trim() || '';
+    const msg     = document.getElementById('slf-msg')?.value.trim() || '';
+
+    const text = [
+      `Hi Henry Corporation! I'd like to get my International Expansion Roadmap.`,
+      ``,
+      `Name: ${name}`,
+      company ? `Company: ${company}` : '',
+      `Product / Category: ${product}`,
+      country ? `Target Market: ${country}` : '',
+      phone   ? `Phone: ${phone}` : '',
+      email   ? `Email: ${email}` : '',
+      msg     ? `Requirement: ${msg}` : '',
+      ``,
+      `Please send me a personalised expansion roadmap!`,
+    ].filter(Boolean).join('\n');
+
+    window.open(waHref(text), '_blank', 'noopener');
+
+    form.hidden = true;
+    if (success) success.hidden = false;
+  });
+}
+
 function initCountryAccordions() {
   document.querySelectorAll('.cm-card-header').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1504,6 +1809,7 @@ function init() {
   initMobileMenu();
   initStatCounters();
   if (PAGE === 'contact' || PAGE === 'home') initContactSlider();
+  if (PAGE === 'services') initServicesLeadForm();
   if (PAGE === 'platforms') initCountryAccordions();
 }
 
