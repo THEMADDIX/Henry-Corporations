@@ -807,6 +807,142 @@ const HC = {
     ],
   },
 
+  // ── Services Page Hero (replaces generic page-hero) ─────────────
+  servicesHero: {
+    badge:   'International Trade & Export Consulting',
+    title:   'Global Trade Solutions That Help<br>Businesses <span class="coral">Expand Internationally</span>',
+    sub:     'We help manufacturers, exporters, suppliers, startups, and growing brands enter international markets through sourcing, buyer acquisition, export consulting, market-entry strategies, and global expansion support.',
+    ctaText: 'Book Free Consultation',
+    ctaHref: 'contact.html',
+    waText:  'Talk on WhatsApp',
+    stats: [
+      { value: 100,  suffix: '+', label: 'Consultations Completed' },
+      { value: 20,   suffix: '+', label: 'Markets Served'          },
+      { value: 500,  suffix: '+', label: 'Business Connections'    },
+      { value: 50,   suffix: '+', label: 'Active Partnerships'     },
+    ],
+    trustItems: [
+      '5+ Years Cross-border Expertise',
+      'India · UAE · Europe · Global',
+      'End-to-End Implementation',
+    ],
+  },
+
+  // ── Global Expansion Services (Services Page Section 3) ──────────
+  globalExpansionServices: [
+    {
+      tag: '01', icon: '🇦🇪', color: '#F59E0B',
+      title: 'UAE Expansion Support',
+      overview: 'Complete market entry into the UAE — the #1 destination for Indian exporters. We handle company setup, FTA VAT registration, marketplace onboarding, and ongoing compliance so your UAE operation is live and fully legal within weeks.',
+      benefits: ['UAE Company (LLC / Free Zone) Formation', 'FTA VAT Registration & Quarterly Filing', 'Amazon.ae & Noon Seller Account Setup', 'Cross-border India ↔ UAE Trade Advisory'],
+      outcome: 'Be selling in the UAE within 4–6 weeks with complete legal and tax compliance.',
+      cta: 'Explore UAE Entry',
+    },
+    {
+      tag: '02', icon: '🇪🇺', color: '#3B82F6',
+      title: 'Europe Market Entry',
+      overview: 'Strategic European marketplace expansion across Germany, UK, France, Netherlands, Italy, Spain and Poland. We handle EU compliance, VAT registration, marketplace account setup, and product localisation for your target country.',
+      benefits: ['EU VAT / OSS Registration & Filing', 'CE Marking & Compliance Guidance', 'Amazon EU / Marketplace Account Setup', 'Multilingual Product Localisation'],
+      outcome: 'Enter Europe\'s €900B+ e-commerce market with a compliant, scalable setup.',
+      cta: 'Enter Europe',
+    },
+    {
+      tag: '03', icon: '🛒', color: '#FF9900',
+      title: 'Amazon Global Selling',
+      overview: 'Expand to Amazon International marketplaces — UAE, UK, Germany, USA, and beyond. We handle everything from FBA enrollment and brand registry to cross-border tax compliance and multilingual listings.',
+      benefits: ['Amazon International FBA Enrollment', 'Brand Registry (Global)', 'ASIN & Listing Localisation', 'Cross-border Tax & Compliance'],
+      outcome: 'A fully operational Amazon International store generating sales in 30–45 days.',
+      cta: 'Start Amazon Global',
+    },
+    {
+      tag: '04', icon: '🏪', color: '#96BF48',
+      title: 'Shopify International Expansion',
+      overview: 'Build a global direct-to-consumer storefront on Shopify — multi-currency, international shipping, geo-targeted content, and global payment gateways. We set up everything and ensure full GST/export compliance.',
+      benefits: ['International Shopify Store Setup', 'Multi-currency & Global Payments', 'Cross-border Shipping & Returns', 'GST / Export LUT Compliance'],
+      outcome: 'A conversion-optimised global Shopify store, ready to take international orders.',
+      cta: 'Launch Globally',
+    },
+    {
+      tag: '05', icon: '🌍', color: '#10B981',
+      title: 'D2C Global Expansion',
+      overview: 'Take your direct brand to international consumers — beyond just marketplaces. We build your global presence through your own storefront, social commerce, and D2C channels with full compliance and logistics support.',
+      benefits: ['Global Brand Positioning Strategy', 'International Social Commerce Setup', 'Multi-platform D2C Integration', 'FEMA & International Payment Compliance'],
+      outcome: 'A multi-channel global D2C brand serving customers across 10+ countries.',
+      cta: 'Build Global Brand',
+    },
+    {
+      tag: '06', icon: '🤝', color: '#8B5CF6',
+      title: 'International Distributor Search',
+      overview: 'Find verified international distributors, agents, and wholesale partners for your products in UAE, Europe, Southeast Asia, and beyond. We identify, vet, and facilitate introductions with serious buyers.',
+      benefits: ['Verified Distributor Identification', 'Market-specific Vetting & Background Checks', 'Introduction & Facilitation Support', 'Partnership Terms Advisory'],
+      outcome: 'Active distribution agreements in 2–3 target markets within 90 days.',
+      cta: 'Find Distributors',
+    },
+    {
+      tag: '07', icon: '🚚', color: '#F43397',
+      title: 'Cross-Border Logistics Support',
+      overview: 'End-to-end cross-border logistics management — courier aggregator setup, customs documentation, HS code classification, duty calculation, and fulfilment partner selection for international shipments.',
+      benefits: ['HS Code Classification & Duty Calc', 'Customs Documentation (Invoice, Packing, COO)', 'Freight & Carrier Selection Advisory', 'FBA / 3PL Fulfilment Setup'],
+      outcome: 'Smooth, cost-efficient international shipments from day one.',
+      cta: 'Optimise Logistics',
+    },
+  ],
+
+  // ── Services Page Why Choose Us ──────────────────────────────────
+  servicesWhyUs: [
+    { icon: '🌐', title: 'International Market Knowledge',    desc: 'Deep expertise across UAE, UK, EU, and Asian markets — built from hands-on experience managing hundreds of international expansions.' },
+    { icon: '🎯', title: 'Business-Focused Solutions',        desc: 'Every recommendation is tied to a commercial outcome. We don\'t just advise — we implement, monitor, and optimise for results.' },
+    { icon: '👤', title: 'Personalised Consulting',           desc: 'No templates. Your expansion strategy is built specifically around your product, margins, target markets, and business goals.' },
+    { icon: '🔗', title: 'Global Sourcing Network',          desc: 'Access to a verified global network of buyers, distributors, suppliers, and marketplace partners across 20+ countries.' },
+    { icon: '⚙️', title: 'Practical Implementation Support', desc: 'From registrations and account setups to listings, logistics and compliance — we handle execution, not just advisory.' },
+    { icon: '🤝', title: 'Long-Term Partnership Approach',   desc: 'We\'re not a one-time consultant. We grow with you — managing filings, accounts, and strategy as your global business scales.' },
+  ],
+
+  // ── How We Work (5 Steps) ────────────────────────────────────────
+  howWeWork: [
+    { step: '01', icon: '💬', title: 'Business Consultation',    desc: 'A free 30-minute call to understand your business, products, current export status, and international expansion goals. Zero obligation.' },
+    { step: '02', icon: '🔍', title: 'Opportunity Assessment',   desc: 'We analyse your product-market fit, target country opportunities, competition, compliance requirements, and realistic revenue potential.' },
+    { step: '03', icon: '📋', title: 'Strategy Development',     desc: 'A custom global expansion roadmap — markets to target, platforms to use, compliance steps, realistic timelines, and cost projections.' },
+    { step: '04', icon: '⚙️', title: 'Execution & Setup',        desc: 'Hands-on implementation — company registrations, tax filings, marketplace account creation, product listings, logistics setup, and documentation.' },
+    { step: '05', icon: '📈', title: 'Growth & Scale',           desc: 'Ongoing performance monitoring, compliance filings, account health management, and quarterly strategy reviews to accelerate global growth.' },
+  ],
+
+  // ── Services Page FAQs ───────────────────────────────────────────
+  servicesFaqs: [
+    {
+      q: 'How can I start exporting my products internationally?',
+      a: 'Start with a free consultation with Henry Corporation. We assess your export readiness — IEC registration, GST status, product compliance requirements, and best target markets — then build a clear step-by-step expansion roadmap tailored to your products and budget.',
+    },
+    {
+      q: 'Do you help find international buyers for my products?',
+      a: 'Yes. Our international buyer sourcing service identifies verified importers, distributors, and wholesale buyers for your products across UAE, Europe, Southeast Asia, and other markets. We handle identification, vetting, and initial facilitation — so you connect only with serious, verified trade partners.',
+    },
+    {
+      q: 'Which countries and markets do you support?',
+      a: 'We support expansion into 20+ countries including UAE, UK, Germany, France, Netherlands, Italy, Spain, Poland, USA, Canada, and Australia. Our primary focus is on UAE (Middle East), Europe (8 countries), and Southeast Asia. We handle country-specific compliance, marketplace setup, tax registration, and logistics for each market.',
+    },
+    {
+      q: 'Can you help my business enter the UAE market?',
+      a: 'Absolutely. UAE is our strongest market and the most popular first international step for Indian businesses. We handle everything: UAE LLC or Free Zone company formation, FTA VAT registration, Amazon.ae and Noon seller account setup, customs documentation, and cross-border India↔UAE trade structuring. Most UAE setups are complete within 4–6 weeks.',
+    },
+    {
+      q: 'Can you help with European market entry?',
+      a: 'Yes. We support market entry across 8 European countries — UK, Germany, France, Netherlands, Italy, Spain, Poland, and via EU OSS for multi-country selling. Our Europe service covers EU VAT/OSS registration, CE marking guidance, Amazon EU account setup, marketplace-specific compliance (Bol.com, Allegro, Cdiscount), and multilingual product localisation.',
+    },
+    {
+      q: 'Do you support D2C global expansion through Shopify or your own website?',
+      a: 'Yes. Our D2C global expansion service covers Shopify international store setup, multi-currency payment integration (Stripe, PayPal, Razorpay International), cross-border shipping and returns setup, GST export LUT filing, FEMA compliance for international receipts, and ongoing support. We help you build a brand that sells directly to international consumers.',
+    },
+    {
+      q: 'How does your consulting process work from start to finish?',
+      a: 'We follow a 5-step process: (1) Free Business Consultation, (2) Opportunity Assessment for your target market, (3) Custom Strategy Development with a detailed roadmap, (4) Hands-on Execution & Setup of all registrations, accounts and listings, and (5) Ongoing Growth & Scale support. You have a dedicated point of contact throughout.',
+    },
+    {
+      q: 'How long does international market entry typically take?',
+      a: 'UAE market entry takes 4–6 weeks. UK and EU market entry takes 6–10 weeks. Amazon International account setup takes 2–4 weeks. Timelines depend on the complexity of your product category, country-specific compliance requirements, and how quickly documentation is provided. We give you a precise timeline during the assessment phase.',
+    },
+  ],
+
   // ── Page Heroes ──────────────────────────────────────────────────
   pageHeroes: {
     services: {
