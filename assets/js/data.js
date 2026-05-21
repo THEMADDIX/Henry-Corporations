@@ -1152,4 +1152,112 @@ const HC = {
     { icon: '🌟', stat: 'Global', label: 'Brand Equity Building', desc: 'An internationally selling brand commands premium pricing in India too. Global presence transforms your brand story.' },
     { icon: '🇮🇳', stat: '₹4.5L Cr', label: 'India\'s Export Target', desc: 'India\'s MSME export target is ₹4.5 lakh crore by 2030. Early movers in cross-border e-commerce will capture the lion\'s share.' },
   ],
+
+  // ── Home — Business Type Trust Bar ─────────────────────────────
+  homeTrustBar: [
+    { icon: '🏭', label: 'Manufacturers' },
+    { icon: '📦', label: 'Exporters'     },
+    { icon: '🚢', label: 'Importers'     },
+    { icon: '🛍️', label: 'D2C Brands'   },
+    { icon: '🌍', label: 'Distributors'  },
+    { icon: '🏢', label: 'MSMEs'         },
+    { icon: '🚀', label: 'Startups'      },
+    { icon: '🤝', label: 'Wholesalers'   },
+  ],
+
+  // ── Home About Section ──────────────────────────────────────────
+  homeAbout: {
+    label:   'About Henry Corporation',
+    title:   'Your Gateway To<br>International Trade',
+    paras: [
+      'Henry Corporation is India\'s trusted international trade and export consulting agency — helping manufacturers, exporters, suppliers, startups, and D2C brands break into global markets with confidence and compliance.',
+      'With 5+ years of cross-border expertise, a verified global sourcing network spanning 20+ countries, and end-to-end implementation support — we bridge the gap between Indian businesses and international opportunities.',
+    ],
+    highlights: [
+      { icon: '🌐', text: '20+ international markets served' },
+      { icon: '🔗', text: '500+ verified global connections' },
+      { icon: '📋', text: 'End-to-end compliance support'   },
+      { icon: '🚀', text: 'From consultation to live in weeks' },
+    ],
+    ctaText: 'Learn More About Us',
+    ctaHref: 'why-us.html',
+  },
+
+  // ── Home Services (6 export/trade focused cards) ────────────────
+  homeServices: [
+    {
+      num: '01', icon: '🌍',
+      title: 'Export Consulting',
+      desc:  'End-to-end export advisory — IEC registration, export documentation, LUT filing, FEMA compliance, and market entry strategy tailored to your products and target markets.',
+      benefit: 'Launch your export operations in weeks, not months.',
+      link: 'services.html',
+    },
+    {
+      num: '02', icon: '🔍',
+      title: 'International Buyer Sourcing',
+      desc:  'We identify and connect you with verified international importers, distributors, and wholesale buyers for your products across UAE, Europe, and global markets.',
+      benefit: 'Access verified buyers without cold outreach.',
+      link: 'services.html',
+    },
+    {
+      num: '03', icon: '🏭',
+      title: 'Global Supplier Sourcing',
+      desc:  'For businesses looking to source from India — we identify, vet, and connect you with reliable Indian manufacturers and suppliers matching your quality and volume requirements.',
+      benefit: 'Source quality products direct from India.',
+      link: 'services.html',
+    },
+    {
+      num: '04', icon: '📊',
+      title: 'Market Entry Strategy',
+      desc:  'Data-driven market selection and entry planning — competitor analysis, pricing strategy, import duty mapping, platform selection, and a step-by-step roadmap for your target country.',
+      benefit: 'Enter new markets with a clear, tested strategy.',
+      link: 'services.html',
+    },
+    {
+      num: '05', icon: '📋',
+      title: 'Export Documentation Support',
+      desc:  'Complete export documentation — commercial invoices, packing lists, bills of lading, certificates of origin, DGFT RCMC, AD Code registration, and Letter of Credit handling.',
+      benefit: 'Zero documentation errors on every shipment.',
+      link: 'services.html',
+    },
+    {
+      num: '06', icon: '⚖️',
+      title: 'International Trade Advisory',
+      desc:  'Expert advisory on DTAA benefits, transfer pricing, permanent establishment risk, multi-jurisdiction compliance planning, and international business structuring.',
+      benefit: 'Structure your global business tax-efficiently.',
+      link: 'services.html',
+    },
+  ],
+
+  // ── Home FAQs (7 questions) ─────────────────────────────────────
+  homeFaqs: [
+    {
+      q: 'How do I start exporting from India?',
+      a: 'Starting to export from India involves obtaining an IEC (Import Export Code) from DGFT, ensuring GST registration, filing an LUT for zero-rated exports, and setting up proper export documentation. Henry Corporation guides you through every step — from export readiness assessment to your first international shipment — completely hand-held.',
+    },
+    {
+      q: 'Do you help find international buyers for my products?',
+      a: 'Yes. Our International Buyer Sourcing service identifies verified importers, distributors, and wholesale buyers for your products across UAE, Europe, Southeast Asia, and other markets. We handle identification, vetting, and initial facilitation — so you connect only with serious, verified trade partners.',
+    },
+    {
+      q: 'Which countries and markets do you support?',
+      a: 'We support expansion into 20+ countries including UAE, UK, Germany, France, Netherlands, Italy, Spain, Poland, USA, Canada, and Australia. Our primary focus is UAE (Middle East), Europe (8 countries), and Southeast Asia. We handle country-specific compliance, marketplace setup, and logistics for each market.',
+    },
+    {
+      q: 'Can you assist with UAE expansion?',
+      a: 'Absolutely. UAE is our strongest market. We handle everything: UAE LLC or Free Zone company formation, FTA VAT registration, Amazon.ae and Noon seller account setup, customs documentation, and India↔UAE trade structuring. Most UAE setups are complete within 4–6 weeks.',
+    },
+    {
+      q: 'Can you help enter European markets?',
+      a: 'Yes. We support market entry across 8 European countries — UK, Germany, France, Netherlands, Italy, Spain, Poland, and via EU OSS for multi-country selling. Our Europe service covers EU VAT/OSS registration, CE marking guidance, Amazon EU account setup, and multilingual product localisation.',
+    },
+    {
+      q: 'How long does the international expansion process take?',
+      a: 'UAE market entry takes 4–6 weeks. UK and EU market entry takes 6–10 weeks. Amazon International account setup takes 2–4 weeks. Timelines depend on product category, country compliance requirements, and document availability. We provide a precise timeline during the assessment phase.',
+    },
+    {
+      q: 'What industries and product categories do you work with?',
+      a: 'We work with manufacturers and exporters across all major categories including textiles and apparel, food and spices, handicrafts and home décor, electronics, beauty and wellness, industrial goods, and FMCG. We have specific experience in UAE, UK, and European market requirements for each category.',
+    },
+  ],
 };
