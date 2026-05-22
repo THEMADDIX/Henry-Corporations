@@ -757,8 +757,6 @@ const HC = {
       { label: 'Contact Us',     href: 'contact.html'  },
       { label: 'Privacy Policy', href: 'privacy.html'  },
       { label: 'Terms & Conditions', href: 'terms.html'},
-      { label: 'Refund Policy',  href: 'refund.html'  },
-      { label: 'Cookie Policy',  href: 'cookie.html'  },
     ],
     services: [
       { label: 'GST Registration',      href: 'services.html' },
