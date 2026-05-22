@@ -1,50 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/0.9">
+
+  <!-- Primary pages -->
   <url>
     <loc>https://henry-corporation.com/</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://henry-corporation.com/assets/logo.png</image:loc>
+      <image:title>Henry Corporation — Export Consulting India</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://henry-corporation.com/services.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://henry-corporation.com/platforms.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://henry-corporation.com/why-us.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://henry-corporation.com/pricing.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://henry-corporation.com/contact.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+
+  <!-- Blog hub -->
+  <url>
+    <loc>https://henry-corporation.com/blog.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Blog posts -->
+  <url>
+    <loc>https://henry-corporation.com/blog/how-to-start-exporting-from-india.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://henry-corporation.com/blog/uae-business-setup-for-indian-companies.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://henry-corporation.com/blog/iec-code-registration-guide.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://henry-corporation.com/blog/top-products-to-export-from-india-2026.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://henry-corporation.com/blog/sell-on-amazon-uae-from-india.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Legal pages -->
   <url>
     <loc>https://henry-corporation.com/privacy.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://henry-corporation.com/terms.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
