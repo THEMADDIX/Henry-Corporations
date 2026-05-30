@@ -1,0 +1,12 @@
+{
+  "name": "henry-corporation-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Henry Corporation marketing site — export consulting & global business expansion.",
+  "scripts": {
+    "build": "node build/prerender.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "^24.0.0"
+  }
+}
