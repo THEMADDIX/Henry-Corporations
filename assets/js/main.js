@@ -95,9 +95,14 @@ function renderMeta() {
   setMeta('og:type',        'website',  true);
   setMeta('og:image',       'https://henry-corporation.com/assets/logo.png', true);
   setMeta('og:image:alt',   'Henry Corporation — Export Consulting & Global Business Expansion', true);
+  setMeta('og:image:width', '2218', true);
+  setMeta('og:image:height','1194', true);
+  setMeta('og:image:type',  'image/png', true);
   setMeta('og:locale',      'en_IN',    true);
   setMeta('og:site_name',   HC.company.name, true);
   setMeta('twitter:card',   'summary_large_image');
+  setMeta('twitter:site',   '@henrycorpIN');
+  setMeta('twitter:creator','@henrycorpIN');
   setMeta('twitter:title',  m.ogTitle);
   setMeta('twitter:description', m.ogDesc);
   setMeta('twitter:image',  'https://henry-corporation.com/assets/logo.png');
@@ -120,8 +125,8 @@ function renderMeta() {
         logo: {
           '@type':  'ImageObject',
           url:      'https://henry-corporation.com/assets/logo.png',
-          width:    '512',
-          height:   '512',
+          width:    '2218',
+          height:   '1194',
         },
         image:      'https://henry-corporation.com/assets/logo.png',
         description: HC.meta.description,
