@@ -103,6 +103,11 @@ function renderMeta() {
   setMeta('twitter:image',  'https://henry-corporation.com/assets/logo.png');
   setMeta('twitter:image:alt', 'Henry Corporation — Export Consulting & Global Business Expansion');
 
+  // Geo / local targeting — primary base India, strong UAE presence.
+  setMeta('geo.region',    'IN');
+  setMeta('geo.placename', 'India & Dubai, UAE');
+  setMeta('theme-color',   '#0B1F3A');
+
   const baseSchema = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -163,14 +168,24 @@ function renderMeta() {
         telephone:  HC.company.phone,
         email:      HC.company.email,
         priceRange: '₹₹',
-        address: {
-          '@type':         'PostalAddress',
-          addressCountry:  'IN',
-          addressRegion:   'India',
-        },
+        address: [
+          {
+            '@type':         'PostalAddress',
+            addressCountry:  'IN',
+            addressRegion:   'India',
+          },
+          {
+            '@type':         'PostalAddress',
+            addressCountry:  'AE',
+            addressLocality: 'Dubai',
+            addressRegion:   'Dubai',
+          },
+        ],
         areaServed: [
-          { '@type': 'Country', name: 'India' },
-          { '@type': 'Country', name: 'United Arab Emirates' },
+          { '@type': 'Country',          name: 'India' },
+          { '@type': 'Country',          name: 'United Arab Emirates' },
+          { '@type': 'City',             name: 'Dubai' },
+          { '@type': 'AdministrativeArea', name: 'Europe' },
         ],
         openingHours: 'Mo-Sa 10:00-19:00',
         sameAs: Object.values(HC.company.social || {}),
