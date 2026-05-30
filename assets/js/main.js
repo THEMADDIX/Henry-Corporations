@@ -16,6 +16,7 @@ const I = {
   phone:     `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.03 1.22 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>`,
   mail:      `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,
   clock:     `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+  pin:       `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
   wa:        `<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`,
   plus:      `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>`,
   minus:     `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/></svg>`,
@@ -95,6 +96,9 @@ function renderMeta() {
   setMeta('og:type',        'website',  true);
   setMeta('og:image',       'https://henry-corporation.com/assets/logo.png', true);
   setMeta('og:image:alt',   'Henry Corporation — Export Consulting & Global Business Expansion', true);
+  setMeta('og:image:width', '2218', true);
+  setMeta('og:image:height','1194', true);
+  setMeta('og:image:type',  'image/png', true);
   setMeta('og:locale',      'en_IN',    true);
   setMeta('og:site_name',   HC.company.name, true);
   setMeta('twitter:card',   'summary_large_image');
@@ -102,6 +106,13 @@ function renderMeta() {
   setMeta('twitter:description', m.ogDesc);
   setMeta('twitter:image',  'https://henry-corporation.com/assets/logo.png');
   setMeta('twitter:image:alt', 'Henry Corporation — Export Consulting & Global Business Expansion');
+
+  // Geo / local targeting — registered office in Bally, Howrah, West Bengal.
+  setMeta('geo.region',    'IN-WB');
+  setMeta('geo.placename', 'Bally, Howrah, West Bengal');
+  setMeta('geo.position',  '22.6457;88.3479');
+  setMeta('ICBM',          '22.6457, 88.3479');
+  setMeta('theme-color',   '#0B1F3A');
 
   const baseSchema = {
     '@context': 'https://schema.org',
@@ -115,13 +126,21 @@ function renderMeta() {
         logo: {
           '@type':  'ImageObject',
           url:      'https://henry-corporation.com/assets/logo.png',
-          width:    '512',
-          height:   '512',
+          width:    '2218',
+          height:   '1194',
         },
         image:      'https://henry-corporation.com/assets/logo.png',
         description: HC.meta.description,
         telephone:  HC.company.phone,
         email:      HC.company.email,
+        address: {
+          '@type':          'PostalAddress',
+          streetAddress:    '2nd Floor, Om Residency, 2 Dingsai Para Road',
+          addressLocality:  'Bally, Howrah',
+          addressRegion:    'West Bengal',
+          postalCode:       '711201',
+          addressCountry:   'IN',
+        },
         foundingDate: '2020',
         areaServed: [
           { '@type': 'Country', name: 'India' },
@@ -164,13 +183,24 @@ function renderMeta() {
         email:      HC.company.email,
         priceRange: '₹₹',
         address: {
-          '@type':         'PostalAddress',
-          addressCountry:  'IN',
-          addressRegion:   'India',
+          '@type':          'PostalAddress',
+          streetAddress:    '2nd Floor, Om Residency, 2 Dingsai Para Road',
+          addressLocality:  'Bally, Howrah',
+          addressRegion:    'West Bengal',
+          postalCode:       '711201',
+          addressCountry:   'IN',
         },
+        geo: {
+          '@type':    'GeoCoordinates',
+          latitude:   '22.6457',
+          longitude:  '88.3479',
+        },
+        hasMap:     'https://www.google.com/maps/search/?api=1&query=22.6457,88.3479',
         areaServed: [
-          { '@type': 'Country', name: 'India' },
-          { '@type': 'Country', name: 'United Arab Emirates' },
+          { '@type': 'Country',          name: 'India' },
+          { '@type': 'Country',          name: 'United Arab Emirates' },
+          { '@type': 'City',             name: 'Dubai' },
+          { '@type': 'AdministrativeArea', name: 'Europe' },
         ],
         openingHours: 'Mo-Sa 10:00-19:00',
         sameAs: Object.values(HC.company.social || {}),
@@ -900,6 +930,13 @@ function renderContact() {
         <p class="cs-left-sub reveal-left reveal-d1">Fill the form and we'll get back to you within 2 business hours — or reach out directly via WhatsApp for an instant response.</p>
         <div class="cs-contact-info reveal-left reveal-d2">
           <div class="cs-info-item">
+            <div class="cs-info-icon">${I.pin}</div>
+            <div>
+              <div class="cs-info-label">Office Address</div>
+              <a class="cs-info-text" href="${HC.company.mapUrl}" target="_blank" rel="noopener">${HC.company.address}</a>
+            </div>
+          </div>
+          <div class="cs-info-item">
             <div class="cs-info-icon">${I.phone}</div>
             <div>
               <div class="cs-info-label">Phone / WhatsApp</div>
@@ -1045,20 +1082,19 @@ function renderPlatformGrid() {
 
 /* ── Footer ─────────────────────────────────────────────── */
 function renderFooter() {
-  const socialLinks = HC.company.social ? `
+  const socialIcons = {
+    linkedin:  `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>`,
+    instagram: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`,
+    facebook:  `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>`,
+    twitter:   `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>`,
+  };
+  const socialEntries = Object.entries(HC.company.social || {}).filter(([k, url]) => url && socialIcons[k]);
+  const socialLinks = socialEntries.length ? `
     <div class="footer-social">
-      <a href="${HC.company.social.linkedin}" target="_blank" rel="noopener noreferrer" aria-label="Henry Corporation on LinkedIn" class="footer-social-link">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-      </a>
-      <a href="${HC.company.social.instagram}" target="_blank" rel="noopener noreferrer" aria-label="Henry Corporation on Instagram" class="footer-social-link">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-      </a>
-      <a href="${HC.company.social.facebook}" target="_blank" rel="noopener noreferrer" aria-label="Henry Corporation on Facebook" class="footer-social-link">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-      </a>
-      <a href="${HC.company.social.twitter}" target="_blank" rel="noopener noreferrer" aria-label="Henry Corporation on Twitter" class="footer-social-link">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
-      </a>
+      ${socialEntries.map(([k, url]) => `
+      <a href="${url}" target="_blank" rel="noopener noreferrer" aria-label="${HC.company.name} on ${k.charAt(0).toUpperCase() + k.slice(1)}" class="footer-social-link">
+        ${socialIcons[k]}
+      </a>`).join('')}
     </div>
   ` : '';
 
@@ -1095,6 +1131,7 @@ function renderFooter() {
           <img src="${PATH_PREFIX}assets/logo.png" alt="${HC.company.name} logo" class="footer-logo-img" loading="lazy" width="200" height="120" />
           <p class="footer-tagline">${HC.company.footerDesc.slice(0, 160)}…</p>
           <div class="footer-contact-block">
+            <a href="${HC.company.mapUrl}" target="_blank" rel="noopener" class="footer-contact-item">${I.pin} ${HC.company.address}</a>
             <a href="${HC.company.phoneTel}" class="footer-contact-item">${I.phone} ${HC.company.phone}</a>
             <a href="mailto:${HC.company.email}" class="footer-contact-item">${I.mail} ${HC.company.email}</a>
             <span class="footer-contact-item">${I.clock} ${HC.company.hours}</span>

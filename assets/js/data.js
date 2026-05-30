@@ -19,8 +19,9 @@ const HC = {
     email:       'aarif@henry-corporation.com',
     waNumber:    '919693334119',
     hours:       'Mon – Sat, 10:00 AM – 7:00 PM IST',
-    location:    'India & UAE',
-    address:     'India (serving clients across all states) & UAE (Dubai)',
+    location:    'Bally, Howrah, West Bengal, India',
+    address:     '2nd Floor, Om Residency, 2 Dingsai Para Road, Bally, Howrah, West Bengal 711201',
+    mapUrl:      'https://www.google.com/maps/search/?api=1&query=22.6457,88.3479',
     gstin:       'GSTIN: Available on request',
     sellerCount: 500,
     yearsExp:    5,
@@ -28,10 +29,7 @@ const HC = {
     accountsMgd: 500,
     footerDesc:  'Henry Corporation helps Indian businesses expand internationally — with global taxation, export compliance, UAE company formation, and international marketplace solutions across Amazon, Alibaba, Flipkart, Meesho, Myntra, and European markets.',
     social: {
-      linkedin:   'https://www.linkedin.com/company/henry-corporation',
-      instagram:  'https://www.instagram.com/henrycorporation',
-      facebook:   'https://www.facebook.com/henrycorporation',
-      twitter:    'https://twitter.com/henrycorpIN',
+      instagram:  'https://www.instagram.com/hen.rycorp',
     },
   },
 
