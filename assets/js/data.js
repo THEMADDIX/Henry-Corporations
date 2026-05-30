@@ -29,10 +29,7 @@ const HC = {
     accountsMgd: 500,
     footerDesc:  'Henry Corporation helps Indian businesses expand internationally — with global taxation, export compliance, UAE company formation, and international marketplace solutions across Amazon, Alibaba, Flipkart, Meesho, Myntra, and European markets.',
     social: {
-      linkedin:   'https://www.linkedin.com/company/henry-corporation',
-      instagram:  'https://www.instagram.com/henrycorporation',
-      facebook:   'https://www.facebook.com/henrycorporation',
-      twitter:    'https://twitter.com/henrycorpIN',
+      instagram:  'https://www.instagram.com/hen.rycorp',
     },
   },
 
