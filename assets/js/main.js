@@ -328,7 +328,12 @@ function renderMobileNav() {
 function renderHero() {
   return `
     <section class="hero" id="home">
-      <div class="hero-bg" id="hero-bg"></div>
+      <div class="hero-bg" id="hero-bg">
+        <video class="hero-bg-video" autoplay muted loop playsinline preload="auto" poster="assets/hero-map.jpg" aria-hidden="true">
+          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260403_050628_c4e32401-fab4-4a27-b7a8-6e9291cd5959.mp4" type="video/mp4">
+          <source src="assets/hero-bg.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="hero-headline-wrap">
         <h1 class="hero-headline">${HC.hero.title}</h1>
         ${HC.hero.tagline ? `<p class="hero-tagline">${HC.hero.tagline}</p>` : ''}
